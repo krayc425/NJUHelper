@@ -16,6 +16,7 @@ class ViewController: UIViewController {
         self.title = "GPA"
         self.navigationController?.navigationBar.isOpaque = true
         
+        
         // Do any additional setup after loading the view, typically from a nib.
         let tableVC = GPATableViewController(style: UITableViewStyle.grouped)
         self.navigationController?.pushViewController(tableVC, animated: true)

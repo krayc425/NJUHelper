@@ -20,15 +20,15 @@ extension courseType { // 状态对应颜色
     var backgroundColor : UIColor {
         switch self {
         case .通识:
-            return UIColor.red
+            return UIColor.init(colorLiteralRed:252.0/255.0, green:99.0/255.0, blue:96.0/255.0, alpha:1.0)
         case .通修:
-            return UIColor.blue
+            return UIColor.init(colorLiteralRed:247.0/255.0, green:165.0/255.0, blue:80.0/255.0, alpha:1.0)
         case .平台:
-            return UIColor.green
+            return UIColor.init(colorLiteralRed:243.0/255.0, green:205.0/255.0, blue:86.0/255.0 , alpha:1.0)
         case .选修:
-            return UIColor.orange
+            return UIColor.init(colorLiteralRed:112.0/255.0, green:202.0/255.0, blue:87.0/255.0, alpha:1.0)
         case .公共:
-            return UIColor.purple
+            return UIColor.init(colorLiteralRed:81.0/255.0, green:185.0/255.0, blue:214.0/255.0, alpha:1.0)
         }
     }
 }
@@ -38,8 +38,8 @@ class CourseModel: NSObject {
     var chineseName:String;
     var englishName:String;
     var type:courseType;
-    var credit:Int?;
-    var score:Float;
+    var credit:Float?;
+    var score:Float?;
     
     override init() {
         chineseName = "测试名"

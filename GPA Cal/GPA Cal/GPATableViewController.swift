@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import Alamofire
 
 let CellIdentifier = "GPATableViewCell"
 
 class GPATableViewController: UITableViewController {
     
-    var testCourse = [CourseModel]()
+    var termList = [TermModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,39 +26,76 @@ class GPATableViewController: UITableViewController {
         
         let nib = UINib(nibName: CellIdentifier, bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: CellIdentifier)
-        
-        testCourse.append(CourseModel())
-        testCourse.append(CourseModel())
-        testCourse.append(CourseModel())
-        testCourse.append(CourseModel())
-        testCourse.append(CourseModel())
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        let username = "141210026", password = "Songkuixi+xw7"
+        let requestURL = "http://localhost:8000/gpa/username=\(username)&password=\(password)"
+        
+        Alamofire.request(requestURL).responseJSON { response in
+            debugPrint(response)
+            if let json = response.result.value {
+                let array = json as! Array<AnyObject>
+                var resultList = [TermModel]()
+                for dict in array{
+                    let termName = dict["term"] as! String
+                    let courseArr = dict["course_list"] as! Array<AnyObject>
+                    var courseList = [CourseModel]()
+                    for subCourseDict in courseArr{
+                        let chineseName = subCourseDict["chinese_name"] as? String ?? ""
+                        let englishName = subCourseDict["english_name"] as? String ?? ""
+                        let credit : Float?
+                        let type  = subCourseDict["type"] as? String ?? "通修"
+                        if subCourseDict["credit"] as! String != ""{
+                            credit = Float(subCourseDict["credit"] as! String) as! Float
+                        }else{
+                            credit = nil
+                        }
+                        let score : Float? = Float(subCourseDict["score"] as! String) as! Float
+                        let courseModel = CourseModel()
+                        courseModel.chineseName = chineseName
+                        courseModel.englishName = englishName
+                        courseModel.score = score
+                        courseModel.credit = credit
+                        courseModel.type = courseType(rawValue: type)!
+                        courseList.append(courseModel)
+                    }
+                    let termModel = TermModel(name: termName, courseList: courseList)
+                    resultList.append(termModel)
+                }
+                self.termList = resultList
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return termList.count
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return testCourse.count
+        let termModel : TermModel = termList[section]
+        return termModel.courseList.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> GPATableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as! GPATableViewCell
         
         // Configure the cell...
-        let course = testCourse[indexPath.row]
+        let termModel : TermModel = termList[indexPath.section]
+        let course = termModel.courseList[indexPath.row]
         cell.chineseNameLabel.text = course.chineseName
         cell.englishNameLabel.text = course.englishName
-        cell.scoreLabel.text = "\(course.score)"
+        cell.scoreLabel.text = "\(course.score ?? 0.0)"
         if course.credit == nil{
             cell.creditLabel.text = "无学分"
         }else{
@@ -76,6 +114,11 @@ class GPATableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        let termModel : TermModel = termList[section]
+        return termModel.name
     }
 
     /*

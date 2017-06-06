@@ -77,7 +77,7 @@ def getGPA(request, username, password):
             gradePage = opener.open(get_request).read().decode()
 
             term_name = re.findall(r'<a style="font-size: 14px; text-align: center;font-weight: bold;">(.*?)</a>',
-                                   gradePage, re.S)
+                                   gradePage, re.S)[0]
             term_dict = {"term": term_name}
             # 正则表达式读取
             detailScoreItems = re.findall('<td valign="middle">(.*?)</td>.*?'

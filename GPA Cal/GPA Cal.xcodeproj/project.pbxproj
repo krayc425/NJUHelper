@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2490D1831EE6F8CC00F78151 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */; };
 		2490D1851EE6FD0500F78151 /* TermModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2490D1841EE6FD0500F78151 /* TermModel.swift */; };
-		24BC419D1EE6F6B00020B78D /* CourseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BC419C1EE6F6B00020B78D /* CourseHelper.swift */; };
 		24D827DE1EE681D5006889F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827DD1EE681D5006889F0 /* AppDelegate.swift */; };
 		24D827E51EE681D5006889F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24D827E41EE681D5006889F0 /* Assets.xcassets */; };
 		24D827F11EE68206006889F0 /* GPATableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827EF1EE68206006889F0 /* GPATableViewCell.swift */; };
@@ -23,7 +22,6 @@
 /* Begin PBXFileReference section */
 		2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2490D1841EE6FD0500F78151 /* TermModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermModel.swift; sourceTree = "<group>"; };
-		24BC419C1EE6F6B00020B78D /* CourseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseHelper.swift; sourceTree = "<group>"; };
 		24BC419E1EE6F6E30020B78D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		24D827DA1EE681D5006889F0 /* GPA Cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPA Cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D827DD1EE681D5006889F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -74,7 +72,6 @@
 			children = (
 				24D827DD1EE681D5006889F0 /* AppDelegate.swift */,
 				24D827F31EE68217006889F0 /* ViewController.swift */,
-				24BC419C1EE6F6B00020B78D /* CourseHelper.swift */,
 				2490D1841EE6FD0500F78151 /* TermModel.swift */,
 				24D827F91EE68827006889F0 /* CourseModel.swift */,
 				24D827F51EE68228006889F0 /* GPATableViewController.swift */,
@@ -233,7 +230,6 @@
 				24D827F41EE68217006889F0 /* ViewController.swift in Sources */,
 				24D827FA1EE68827006889F0 /* CourseModel.swift in Sources */,
 				2490D1851EE6FD0500F78151 /* TermModel.swift in Sources */,
-				24BC419D1EE6F6B00020B78D /* CourseHelper.swift in Sources */,
 				24D827F11EE68206006889F0 /* GPATableViewCell.swift in Sources */,
 				24D827F71EE68228006889F0 /* GPATableViewController.swift in Sources */,
 				24D827DE1EE681D5006889F0 /* AppDelegate.swift in Sources */,
