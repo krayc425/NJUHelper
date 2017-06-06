@@ -6,6 +6,7 @@ from urllib import request, parse
 import urllib
 import json
 import random
+import socket
 from django.http import HttpResponse
 
 agents = [
@@ -39,16 +40,17 @@ def getUserAgentHeader():
     return headers
 
 
-postdata = {
-    'userName': '141210026',
-    'password': 'Songkuixi+xw7'
-}
-# # 登录教务系统的URL
-loginUrl = 'http://jw.nju.edu.cn:8080/jiaowu/login.do'
 
-
-def getGPA(request, keyword):
+def getGPA(request, username, password):
     try:
+        postdata = {
+            'userName': username,
+            'password': password
+        }
+
+        # # 登录教务系统的URL
+        loginUrl = 'http://jw.nju.edu.cn:8080/jiaowu/login.do'
+
         cookie = cookiejar.CookieJar()  # 创建cookiejar用于保存cookie
         cjhdr = urllib.request.HTTPCookieProcessor(cookie)  # 创建cookiehandler用于管理http的cookie
         opener = urllib.request.build_opener(cjhdr)  # 将cookiehandler注册并生成一个opener之后使用这个opener就可以自动保存cookie

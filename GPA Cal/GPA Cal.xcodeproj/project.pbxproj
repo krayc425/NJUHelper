@@ -7,27 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2490D1831EE6F8CC00F78151 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */; };
+		2490D1851EE6FD0500F78151 /* TermModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2490D1841EE6FD0500F78151 /* TermModel.swift */; };
+		24BC419D1EE6F6B00020B78D /* CourseHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BC419C1EE6F6B00020B78D /* CourseHelper.swift */; };
 		24D827DE1EE681D5006889F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827DD1EE681D5006889F0 /* AppDelegate.swift */; };
 		24D827E51EE681D5006889F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24D827E41EE681D5006889F0 /* Assets.xcassets */; };
-		24D827E81EE681D5006889F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24D827E61EE681D5006889F0 /* LaunchScreen.storyboard */; };
 		24D827F11EE68206006889F0 /* GPATableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827EF1EE68206006889F0 /* GPATableViewCell.swift */; };
 		24D827F21EE68206006889F0 /* GPATableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24D827F01EE68206006889F0 /* GPATableViewCell.xib */; };
 		24D827F41EE68217006889F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827F31EE68217006889F0 /* ViewController.swift */; };
 		24D827F71EE68228006889F0 /* GPATableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827F51EE68228006889F0 /* GPATableViewController.swift */; };
 		24D827FA1EE68827006889F0 /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827F91EE68827006889F0 /* CourseModel.swift */; };
+		BF70182175FABCE8E2130674 /* Pods_GPA_Cal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 329DE7FC09D480849C36273C /* Pods_GPA_Cal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		2490D1841EE6FD0500F78151 /* TermModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermModel.swift; sourceTree = "<group>"; };
+		24BC419C1EE6F6B00020B78D /* CourseHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseHelper.swift; sourceTree = "<group>"; };
+		24BC419E1EE6F6E30020B78D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		24D827DA1EE681D5006889F0 /* GPA Cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPA Cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D827DD1EE681D5006889F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24D827E41EE681D5006889F0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		24D827E71EE681D5006889F0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		24D827E91EE681D5006889F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24D827EF1EE68206006889F0 /* GPATableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPATableViewCell.swift; sourceTree = "<group>"; };
 		24D827F01EE68206006889F0 /* GPATableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPATableViewCell.xib; sourceTree = "<group>"; };
 		24D827F31EE68217006889F0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		24D827F51EE68228006889F0 /* GPATableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPATableViewController.swift; sourceTree = "<group>"; };
 		24D827F91EE68827006889F0 /* CourseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
+		329DE7FC09D480849C36273C /* Pods_GPA_Cal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPA_Cal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3FAFF1D6DF0CA9459E0DC6D5 /* Pods-GPA Cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPA Cal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GPA Cal/Pods-GPA Cal.debug.xcconfig"; sourceTree = "<group>"; };
+		7B9EBE7AC2D1DF6347BF52E8 /* Pods-GPA Cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPA Cal.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPA Cal/Pods-GPA Cal.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,6 +44,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF70182175FABCE8E2130674 /* Pods_GPA_Cal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -46,6 +56,8 @@
 			children = (
 				24D827DC1EE681D5006889F0 /* GPA Cal */,
 				24D827DB1EE681D5006889F0 /* Products */,
+				D9F6C52B35557B752D8B5A3B /* Pods */,
+				73BB2A6E808D44FAB21291C1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -62,15 +74,35 @@
 			children = (
 				24D827DD1EE681D5006889F0 /* AppDelegate.swift */,
 				24D827F31EE68217006889F0 /* ViewController.swift */,
+				24BC419C1EE6F6B00020B78D /* CourseHelper.swift */,
+				2490D1841EE6FD0500F78151 /* TermModel.swift */,
 				24D827F91EE68827006889F0 /* CourseModel.swift */,
 				24D827F51EE68228006889F0 /* GPATableViewController.swift */,
 				24D827EF1EE68206006889F0 /* GPATableViewCell.swift */,
 				24D827F01EE68206006889F0 /* GPATableViewCell.xib */,
 				24D827E41EE681D5006889F0 /* Assets.xcassets */,
-				24D827E61EE681D5006889F0 /* LaunchScreen.storyboard */,
 				24D827E91EE681D5006889F0 /* Info.plist */,
+				2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */,
 			);
 			path = "GPA Cal";
+			sourceTree = "<group>";
+		};
+		73BB2A6E808D44FAB21291C1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				24BC419E1EE6F6E30020B78D /* Alamofire.framework */,
+				329DE7FC09D480849C36273C /* Pods_GPA_Cal.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D9F6C52B35557B752D8B5A3B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3FAFF1D6DF0CA9459E0DC6D5 /* Pods-GPA Cal.debug.xcconfig */,
+				7B9EBE7AC2D1DF6347BF52E8 /* Pods-GPA Cal.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -80,9 +112,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 24D827EC1EE681D5006889F0 /* Build configuration list for PBXNativeTarget "GPA Cal" */;
 			buildPhases = (
+				BAF0DFAAB31F167C9DA9A16D /* [CP] Check Pods Manifest.lock */,
 				24D827D61EE681D5006889F0 /* Sources */,
 				24D827D71EE681D5006889F0 /* Frameworks */,
 				24D827D81EE681D5006889F0 /* Resources */,
+				265AEC1B06FED61AB1BC598D /* [CP] Embed Pods Frameworks */,
+				AC06F47963EF22B7F0F2A38F /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -100,12 +135,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "宋 奎熹";
 				TargetAttributes = {
 					24D827D91EE681D5006889F0 = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = VEBQ28K9EA;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -133,13 +169,61 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2490D1831EE6F8CC00F78151 /* Launch Screen.storyboard in Resources */,
 				24D827F21EE68206006889F0 /* GPATableViewCell.xib in Resources */,
-				24D827E81EE681D5006889F0 /* LaunchScreen.storyboard in Resources */,
 				24D827E51EE681D5006889F0 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		265AEC1B06FED61AB1BC598D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GPA Cal/Pods-GPA Cal-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AC06F47963EF22B7F0F2A38F /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GPA Cal/Pods-GPA Cal-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BAF0DFAAB31F167C9DA9A16D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		24D827D61EE681D5006889F0 /* Sources */ = {
@@ -148,6 +232,8 @@
 			files = (
 				24D827F41EE68217006889F0 /* ViewController.swift in Sources */,
 				24D827FA1EE68827006889F0 /* CourseModel.swift in Sources */,
+				2490D1851EE6FD0500F78151 /* TermModel.swift in Sources */,
+				24BC419D1EE6F6B00020B78D /* CourseHelper.swift in Sources */,
 				24D827F11EE68206006889F0 /* GPATableViewCell.swift in Sources */,
 				24D827F71EE68228006889F0 /* GPATableViewController.swift in Sources */,
 				24D827DE1EE681D5006889F0 /* AppDelegate.swift in Sources */,
@@ -155,17 +241,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		24D827E61EE681D5006889F0 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				24D827E71EE681D5006889F0 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		24D827EA1EE681D5006889F0 /* Debug */ = {
@@ -178,7 +253,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -186,7 +263,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -228,7 +309,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -236,7 +319,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -263,6 +350,7 @@
 		};
 		24D827ED1EE681D5006889F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3FAFF1D6DF0CA9459E0DC6D5 /* Pods-GPA Cal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VEBQ28K9EA;
@@ -271,12 +359,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.krayc.GPA-Cal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		24D827EE1EE681D5006889F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7B9EBE7AC2D1DF6347BF52E8 /* Pods-GPA Cal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = VEBQ28K9EA;
@@ -285,6 +375,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.krayc.GPA-Cal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -308,6 +399,7 @@
 				24D827EE1EE681D5006889F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
