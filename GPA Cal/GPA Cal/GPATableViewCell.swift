@@ -24,6 +24,11 @@ class GPATableViewCell: UITableViewCell {
         typeLabel.font = UIFont.init(name: "PingFangSC-Regular", size: 12.0);
         creditLabel.font = UIFont.init(name: "PingFangSC-Regular", size: 12.0);
         scoreLabel.font = UIFont.init(name: "PingFangSC-Regular", size: 30.0);
+        
+        typeLabel.layer.cornerRadius = 5.0
+        creditLabel.layer.cornerRadius = 5.0
+        
+        typeLabel.textColor = UIColor.white
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

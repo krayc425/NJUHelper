@@ -64,6 +64,8 @@ class GPATableViewController: UITableViewController {
             cell.creditLabel.text = "\(course.credit!)" + "学分"
         }
         cell.typeLabel.text = "\(course.type)"
+        
+        cell.typeLabel.backgroundColor = course.type.backgroundColor
     
         return cell
     }
