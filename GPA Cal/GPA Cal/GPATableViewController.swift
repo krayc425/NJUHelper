@@ -35,6 +35,7 @@ class GPATableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let username = "141210026", password = "Songkuixi+xw7"
+        //        let requestURL = "http://120.25.196.24:8000/gpa/username=\(username)&password=\(password)"
         let requestURL = "http://localhost:8000/gpa/username=\(username)&password=\(password)"
         
         Alamofire.request(requestURL).responseJSON { response in
@@ -52,11 +53,11 @@ class GPATableViewController: UITableViewController {
                         let credit : Float?
                         let type  = subCourseDict["type"] as? String ?? "通修"
                         if subCourseDict["credit"] as! String != ""{
-                            credit = Float(subCourseDict["credit"] as! String) as! Float
+                            credit = Float(subCourseDict["credit"] as! String)
                         }else{
                             credit = nil
                         }
-                        let score : Float? = Float(subCourseDict["score"] as! String) as! Float
+                        let score : Float? = Float(subCourseDict["score"] as! String)
                         let courseModel = CourseModel()
                         courseModel.chineseName = chineseName
                         courseModel.englishName = englishName
@@ -116,9 +117,25 @@ class GPATableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = GPATableHeaderView.instanceFromNib()
         let termModel : TermModel = termList[section]
-        return termModel.name
+        headerView.termTitleLabel.text = termModel.name
+        headerView.gpaLabel.text = String(format: "%.3f", GPACalculator.calculateGPA(courseList: termModel.courseList))
+        headerView.gpaLabel.sizeToFit()
+        return headerView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 80.0
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?{
+        return UIView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
+    }
+
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.00001
     }
 
     /*

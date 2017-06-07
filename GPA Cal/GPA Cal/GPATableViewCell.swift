@@ -26,7 +26,9 @@ class GPATableViewCell: UITableViewCell {
         scoreLabel.font = UIFont.init(name: "PingFangSC-Light", size: 32.0);
         
         typeLabel.layer.cornerRadius = 5.0
+        typeLabel.layer.masksToBounds = true
         creditLabel.layer.cornerRadius = 5.0
+        creditLabel.layer.masksToBounds = true
         
         typeLabel.textColor = UIColor.white
     }

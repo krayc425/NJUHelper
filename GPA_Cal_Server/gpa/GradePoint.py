@@ -2,8 +2,8 @@
 # coding=utf-8
 import re
 from http import cookiejar
-from urllib import request, parse
-import urllib
+# from urllib import request, parse
+import urllib.request, urllib.parse
 import json
 import random
 import socket
@@ -42,7 +42,7 @@ def getUserAgentHeader():
 
 
 def getGPA(request, username, password):
-    try:
+    # try:
         postdata = {
             'userName': username,
             'password': password
@@ -103,6 +103,6 @@ def getGPA(request, username, password):
             term_dict["course_list"] = term_list
             result_list.append(term_dict)
         return HttpResponse(json.dumps(result_list, ensure_ascii=False))
-    except:
-        return HttpResponse("Fail")
+    # except:
+        # return HttpResponse("Fail")
 
