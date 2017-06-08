@@ -25,7 +25,8 @@ class GPATypeSelectionView: UIView {
         courseType.通修,
         courseType.公共,
         courseType.选修,
-        courseType.平台
+        courseType.平台,
+        courseType.核心
     ]
     
     required init?(coder aDecoder: NSCoder) {

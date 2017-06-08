@@ -44,8 +44,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         let username = "141210026", password = "Songkuixi+xw7"
-        //        let requestURL = "http://120.25.196.24:8000/gpa/username=\(username)&password=\(password)"
-        let requestURL = "http://localhost:8000/gpa/username=\(username)&password=\(password)"
+        let requestURL = "http://120.25.196.24:8001/gpa/username=\(username)&password=\(password)"
         
         Alamofire.request(requestURL).responseJSON { response in
             debugPrint(response)
@@ -136,6 +135,13 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let path = IndexPath.init(row: indexPath.row, section: indexPath.section)
+        if ignoreCourseSet.contains(path){
+            ignoreCourseSet.remove(path)
+        }else{
+            ignoreCourseSet.insert(path)
+        }
+        self.tableView?.reloadData()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

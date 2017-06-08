@@ -14,6 +14,7 @@ enum courseType : String {
     case 公共 = "公共"
     case 选修 = "选修"
     case 平台 = "平台"
+    case 核心 = "核心"
 }
 
 extension courseType {
@@ -30,6 +31,8 @@ extension courseType {
             return UIColor.init(colorLiteralRed:112.0/255.0, green:202.0/255.0, blue:87.0/255.0, alpha:1.0)
         case .公共:
             return UIColor.init(colorLiteralRed:81.0/255.0, green:185.0/255.0, blue:214.0/255.0, alpha:1.0)
+        case .核心:
+            return UIColor.init(colorLiteralRed:207.0/255.0, green:139.0/255.0, blue:223.0/255.0, alpha:1.0)
         }
     }
 }

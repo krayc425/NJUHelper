@@ -32,8 +32,8 @@ class GPATableViewCell: UITableViewCell {
         // Initialization code
         chineseNameLabel.font = UIFont.init(name: "PingFangSC-Regular", size: 18.0);
         englishNameLabel.font = UIFont.init(name: "PingFangSC-Light", size: 15.0);
-        typeLabel.font = UIFont.init(name: "PingFangSC-Regular", size: 12.0);
-        creditLabel.font = UIFont.init(name: "PingFangSC-Regular", size: 12.0);
+        typeLabel.font = UIFont.init(name: "PingFangSC-Regular", size: 13.0);
+        creditLabel.font = UIFont.init(name: "PingFangSC-Regular", size: 13.0);
         scoreLabel.font = UIFont.init(name: "PingFangSC-Light", size: 32.0);
         
         typeLabel.layer.cornerRadius = 5.0
