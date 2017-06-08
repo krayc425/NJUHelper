@@ -11,26 +11,33 @@ import Alamofire
 
 let CellIdentifier = "GPATableViewCell"
 
-class GPATableViewController: UITableViewController {
-    
+class GPATableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TypeSelectionDelegate {
+
     var termList = [TermModel]()
+    var tableView: UITableView?
+    var typeSelectionView: GPATypeSelectionView = GPATypeSelectionView.instanceFromNib()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        let statusbarHeight: CGFloat = 40.0
+        let displayWidth: CGFloat = self.view.frame.width
+        let displayHeight: CGFloat = self.view.frame.height
+ 
+        self.tableView = UITableView(frame: CGRect(x: 0, y: statusbarHeight, width: displayWidth, height: displayHeight - statusbarHeight), style: UITableViewStyle.grouped)
+        self.tableView!.delegate = self
+        self.tableView!.dataSource = self
         let nib = UINib(nibName: CellIdentifier, bundle: nil)
-        self.tableView.register(nib, forCellReuseIdentifier: CellIdentifier)
+        self.tableView!.register(nib, forCellReuseIdentifier: CellIdentifier)
+        self.view.addSubview(self.tableView!)
+        
+        self.typeSelectionView.frame = CGRect(x: 0, y: 64, width: displayWidth, height: statusbarHeight)
+        self.typeSelectionView.delegate = self
+        self.view.addSubview(self.typeSelectionView)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,28 +77,25 @@ class GPATableViewController: UITableViewController {
                     resultList.append(termModel)
                 }
                 self.termList = resultList
-                self.tableView.reloadData()
+                self.tableView!.reloadData()
             }
         }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
+    func numberOfSections(in tableView: UITableView) -> Int {
         return termList.count
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let termModel : TermModel = termList[section]
         return termModel.courseList.count
     }
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> GPATableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as! GPATableViewCell
         
-        // Configure the cell...
         let termModel : TermModel = termList[indexPath.section]
         let course = termModel.courseList[indexPath.row]
         cell.chineseNameLabel.text = course.chineseName
@@ -109,78 +113,44 @@ class GPATableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 64.0
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
     
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = GPATableHeaderView.instanceFromNib()
         let termModel : TermModel = termList[section]
         headerView.termTitleLabel.text = termModel.name
         headerView.gpaLabel.text = String(format: "%.3f", GPACalculator.calculateGPA(courseList: termModel.courseList))
-        headerView.gpaLabel.sizeToFit()
+        headerView.courseNumLabel.text = String(format: "共 %d 门课程", termModel.courseList.count)
         return headerView
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 80.0
     }
     
-    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?{
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?{
         return UIView.init(frame: CGRect.init(x: 0, y: 0, width: 0, height: 0))
     }
 
-    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.00001
     }
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    // MARK: - TypeSelectionDelegate
+    
+    func didSelectType(courseType: courseType){
+//        for term in self.termList{
+//            for course in term.courseList{
+//                if course.type == courseType
+//            }
+//        }
+        print(courseType.rawValue)
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
 }

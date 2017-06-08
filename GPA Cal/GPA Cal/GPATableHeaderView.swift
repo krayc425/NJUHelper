@@ -12,12 +12,16 @@ class GPATableHeaderView: UIView {
 
     @IBOutlet var gpaLabel: UILabel!
     @IBOutlet var termTitleLabel: UILabel!
+    @IBOutlet var courseNumLabel: UILabel!
     
     override func draw(_ rect: CGRect) {
         termTitleLabel.font = UIFont.init(name: "PingFangSC-SemiBold", size: 15.0);
         gpaLabel.font = UIFont.init(name: "PingFangSC-Light", size: 35.0)
+        courseNumLabel.font = UIFont.init(name: "PingFangSC-Regular", size: 12.0)
+        courseNumLabel.textColor = UIColor.gray
         termTitleLabel.sizeToFit()
         gpaLabel.sizeToFit()
+        courseNumLabel.sizeToFit()
     }
     
     class func instanceFromNib() -> GPATableHeaderView {

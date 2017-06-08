@@ -18,7 +18,7 @@ class ViewController: UIViewController {
         
         
         // Do any additional setup after loading the view, typically from a nib.
-        let tableVC = GPATableViewController(style: UITableViewStyle.grouped)
+        let tableVC = GPATableViewController()
         self.navigationController?.pushViewController(tableVC, animated: true)
     }
 

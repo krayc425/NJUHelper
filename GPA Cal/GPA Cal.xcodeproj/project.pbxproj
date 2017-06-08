@@ -10,6 +10,9 @@
 		2458A22F1EE8445C008EC469 /* GPATableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2458A22E1EE8445C008EC469 /* GPATableHeaderView.xib */; };
 		2458A2311EE84476008EC469 /* GPATableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458A2301EE84476008EC469 /* GPATableHeaderView.swift */; };
 		2458A2351EE84CCD008EC469 /* GPACalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2458A2341EE84CCD008EC469 /* GPACalculator.swift */; };
+		2475A2141EE9270E0077781C /* GPATypeSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475A2131EE9270E0077781C /* GPATypeSelectionView.swift */; };
+		2475A2161EE9271C0077781C /* GPATypeSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2475A2151EE9271B0077781C /* GPATypeSelectionView.xib */; };
+		2475A2181EE929080077781C /* CourseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475A2171EE929080077781C /* CourseType.swift */; };
 		2490D1831EE6F8CC00F78151 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */; };
 		2490D1851EE6FD0500F78151 /* TermModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2490D1841EE6FD0500F78151 /* TermModel.swift */; };
 		24D827DE1EE681D5006889F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827DD1EE681D5006889F0 /* AppDelegate.swift */; };
@@ -26,6 +29,9 @@
 		2458A22E1EE8445C008EC469 /* GPATableHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPATableHeaderView.xib; sourceTree = "<group>"; };
 		2458A2301EE84476008EC469 /* GPATableHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPATableHeaderView.swift; sourceTree = "<group>"; };
 		2458A2341EE84CCD008EC469 /* GPACalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPACalculator.swift; sourceTree = "<group>"; };
+		2475A2131EE9270E0077781C /* GPATypeSelectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPATypeSelectionView.swift; sourceTree = "<group>"; };
+		2475A2151EE9271B0077781C /* GPATypeSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPATypeSelectionView.xib; sourceTree = "<group>"; };
+		2475A2171EE929080077781C /* CourseType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseType.swift; sourceTree = "<group>"; };
 		2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2490D1841EE6FD0500F78151 /* TermModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermModel.swift; sourceTree = "<group>"; };
 		24BC419E1EE6F6E30020B78D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
@@ -80,15 +86,18 @@
 				24D827F31EE68217006889F0 /* ViewController.swift */,
 				2490D1841EE6FD0500F78151 /* TermModel.swift */,
 				24D827F91EE68827006889F0 /* CourseModel.swift */,
+				2475A2171EE929080077781C /* CourseType.swift */,
 				2458A2341EE84CCD008EC469 /* GPACalculator.swift */,
 				24D827F51EE68228006889F0 /* GPATableViewController.swift */,
 				24D827EF1EE68206006889F0 /* GPATableViewCell.swift */,
 				24D827F01EE68206006889F0 /* GPATableViewCell.xib */,
+				2475A2131EE9270E0077781C /* GPATypeSelectionView.swift */,
+				2475A2151EE9271B0077781C /* GPATypeSelectionView.xib */,
 				2458A2301EE84476008EC469 /* GPATableHeaderView.swift */,
 				2458A22E1EE8445C008EC469 /* GPATableHeaderView.xib */,
 				24D827E41EE681D5006889F0 /* Assets.xcassets */,
-				24D827E91EE681D5006889F0 /* Info.plist */,
 				2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */,
+				24D827E91EE681D5006889F0 /* Info.plist */,
 			);
 			path = "GPA Cal";
 			sourceTree = "<group>";
@@ -179,6 +188,7 @@
 				24D827F21EE68206006889F0 /* GPATableViewCell.xib in Resources */,
 				24D827E51EE681D5006889F0 /* Assets.xcassets in Resources */,
 				2458A22F1EE8445C008EC469 /* GPATableHeaderView.xib in Resources */,
+				2475A2161EE9271C0077781C /* GPATypeSelectionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,7 +247,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2475A2181EE929080077781C /* CourseType.swift in Sources */,
 				2458A2351EE84CCD008EC469 /* GPACalculator.swift in Sources */,
+				2475A2141EE9270E0077781C /* GPATypeSelectionView.swift in Sources */,
 				24D827F41EE68217006889F0 /* ViewController.swift in Sources */,
 				24D827FA1EE68827006889F0 /* CourseModel.swift in Sources */,
 				2490D1851EE6FD0500F78151 /* TermModel.swift in Sources */,
@@ -304,6 +316,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -352,6 +365,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

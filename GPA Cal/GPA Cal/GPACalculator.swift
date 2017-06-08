@@ -11,8 +11,8 @@ import UIKit
 class GPACalculator: NSObject {
 
     class func calculateGPA(courseList : [CourseModel]) -> Float{
-        var sum : Float = 0.0
-        var sumCredit : Float = 0.0
+        var sum: Float = 0.0
+        var sumCredit: Float = 0.0
         for course in courseList{
             sum += course.score! * (course.credit ?? 0)
             sumCredit += (course.credit ?? 0)
