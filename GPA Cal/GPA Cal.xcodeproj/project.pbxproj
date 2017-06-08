@@ -22,7 +22,9 @@
 		24D827F41EE68217006889F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827F31EE68217006889F0 /* ViewController.swift */; };
 		24D827F71EE68228006889F0 /* GPATableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827F51EE68228006889F0 /* GPATableViewController.swift */; };
 		24D827FA1EE68827006889F0 /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827F91EE68827006889F0 /* CourseModel.swift */; };
-		BF70182175FABCE8E2130674 /* Pods_GPA_Cal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 329DE7FC09D480849C36273C /* Pods_GPA_Cal.framework */; };
+		24DBE15F1EE9746A00E2376F /* AIFlatSwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DBE15D1EE973A000E2376F /* AIFlatSwitch.framework */; };
+		24DBE1601EE9746A00E2376F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DBE1591EE9706300E2376F /* Alamofire.framework */; };
+		24DBE1621EE9746A00E2376F /* Pods_GPA_Cal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DBE1611EE9746A00E2376F /* Pods_GPA_Cal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,10 @@
 		24D827F31EE68217006889F0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		24D827F51EE68228006889F0 /* GPATableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPATableViewController.swift; sourceTree = "<group>"; };
 		24D827F91EE68827006889F0 /* CourseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
+		24DBE1591EE9706300E2376F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/GPA_Cal-diujhrelirnfdldmlynqrizmaehy/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
+		24DBE15A1EE9706300E2376F /* M13Checkbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = M13Checkbox.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/GPA_Cal-diujhrelirnfdldmlynqrizmaehy/Build/Products/Debug-iphonesimulator/M13Checkbox/M13Checkbox.framework"; sourceTree = "<group>"; };
+		24DBE15D1EE973A000E2376F /* AIFlatSwitch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AIFlatSwitch.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/GPA_Cal-diujhrelirnfdldmlynqrizmaehy/Build/Products/Debug-iphonesimulator/AIFlatSwitch/AIFlatSwitch.framework"; sourceTree = "<group>"; };
+		24DBE1611EE9746A00E2376F /* Pods_GPA_Cal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_GPA_Cal.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/GPA_Cal-diujhrelirnfdldmlynqrizmaehy/Build/Products/Debug-iphonesimulator/Pods_GPA_Cal.framework"; sourceTree = "<group>"; };
 		329DE7FC09D480849C36273C /* Pods_GPA_Cal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPA_Cal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAFF1D6DF0CA9459E0DC6D5 /* Pods-GPA Cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPA Cal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GPA Cal/Pods-GPA Cal.debug.xcconfig"; sourceTree = "<group>"; };
 		7B9EBE7AC2D1DF6347BF52E8 /* Pods-GPA Cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPA Cal.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPA Cal/Pods-GPA Cal.release.xcconfig"; sourceTree = "<group>"; };
@@ -54,7 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF70182175FABCE8E2130674 /* Pods_GPA_Cal.framework in Frameworks */,
+				24DBE1621EE9746A00E2376F /* Pods_GPA_Cal.framework in Frameworks */,
+				24DBE15F1EE9746A00E2376F /* AIFlatSwitch.framework in Frameworks */,
+				24DBE1601EE9746A00E2376F /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +113,10 @@
 		73BB2A6E808D44FAB21291C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				24DBE1611EE9746A00E2376F /* Pods_GPA_Cal.framework */,
+				24DBE15D1EE973A000E2376F /* AIFlatSwitch.framework */,
+				24DBE1591EE9706300E2376F /* Alamofire.framework */,
+				24DBE15A1EE9706300E2376F /* M13Checkbox.framework */,
 				24BC419E1EE6F6E30020B78D /* Alamofire.framework */,
 				329DE7FC09D480849C36273C /* Pods_GPA_Cal.framework */,
 			);

@@ -16,10 +16,4 @@ class TermModel: NSObject {
         self.name = name
         self.courseList = courseList
     }
-    
-    func filterCourseList(ignoreTypeList: [courseType]) -> [CourseModel] {
-        return courseList.filter{
-            !ignoreTypeList.contains($0.type)
-        }
-    }
 }

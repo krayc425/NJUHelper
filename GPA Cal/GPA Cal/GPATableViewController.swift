@@ -11,13 +11,14 @@ import Alamofire
 
 let CellIdentifier = "GPATableViewCell"
 
-class GPATableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TypeSelectionDelegate {
+class GPATableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, TypeSelectionDelegate, GPATableViewCellDelegate {
 
     var termList = [TermModel]()
     var tableView: UITableView?
     var typeSelectionView: GPATypeSelectionView = GPATypeSelectionView.instanceFromNib()
     
-    var ignoreTypeList = [courseType]()
+//    var ignoreTypeList = [courseType]()
+    var ignoreCourseList = [IndexPath]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,14 +93,16 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let termModel : TermModel = termList[section]
-        return termModel.filterCourseList(ignoreTypeList: ignoreTypeList).count
+        return termModel.courseList.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as! GPATableViewCell
         
+        cell.delegate = self
+        
         let termModel: TermModel = termList[indexPath.section]
-        let course = termModel.filterCourseList(ignoreTypeList: ignoreTypeList)[indexPath.row]
+        let course = termModel.courseList[indexPath.row]
         cell.chineseNameLabel.text = course.chineseName
         cell.englishNameLabel.text = course.englishName
         cell.scoreLabel.text = "\(course.score ?? 0.0)"
@@ -110,7 +113,13 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         }
         cell.typeLabel.text = "\(course.type)"
         
-        cell.typeLabel.backgroundColor = course.type.backgroundColor
+        if ignoreCourseList.contains(indexPath){
+            cell.backgroundColor = UIColor.lightGray
+            cell.typeLabel.backgroundColor = UIColor.lightGray
+        }else{
+            cell.backgroundColor = UIColor.white
+            cell.typeLabel.backgroundColor = course.type.backgroundColor
+        }
     
         return cell
     }
@@ -127,8 +136,13 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         let headerView = GPATableHeaderView.instanceFromNib()
         let termModel : TermModel = termList[section]
         headerView.termTitleLabel.text = termModel.name
-        headerView.gpaLabel.text = String(format: "%.3f", GPACalculator.calculateGPA(courseList: termModel.filterCourseList(ignoreTypeList: ignoreTypeList)))
-        headerView.courseNumLabel.text = String(format: "共 %d 门课程", termModel.filterCourseList(ignoreTypeList: ignoreTypeList).count)
+        headerView.gpaLabel.text = String(format: "%.3f", GPACalculator.calculateGPA(courseList: termModel.courseList.filter{
+            
+            let coursePath = IndexPath.init(row: termModel.courseList.index(of: $0)!, section: section)
+            return !ignoreCourseList.contains(coursePath)
+            
+        }))
+        headerView.courseNumLabel.text = String(format: "共 %d 门课程", termModel.courseList.count)
         return headerView
     }
     
@@ -148,11 +162,60 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     
     func didSelectType(courseType: courseType, isAdding: Bool){
         if isAdding{
-            ignoreTypeList.append(courseType)
+            self.ignoreCourseOfType(courseType: courseType)
         }else{
-            ignoreTypeList.remove(at: ignoreTypeList.index(of: courseType)!)
+            self.notIgnoreCourseOfType(courseType: courseType)
         }
         self.tableView?.reloadData()
     }
     
+    func ignoreCourseOfType(courseType: courseType) {
+        for term in self.termList{
+            for course in term.courseList{
+                if course.type == courseType{
+                    let path = IndexPath.init(row: term.courseList.index(of: course)!, section: self.termList.index(of: term)!)
+                    if !ignoreCourseList.contains(path){
+                        ignoreCourseList.append(path)
+                        let cell = self.tableView?.cellForRow(at: path) as? GPATableViewCell
+                        cell?.setSwitchValue(isSelected: false)
+                    }
+                }
+            }
+        }
+    }
+    
+    func notIgnoreCourseOfType(courseType: courseType) {
+        for term in self.termList{
+            for course in term.courseList{
+                if course.type == courseType{
+                    let path = IndexPath.init(row: term.courseList.index(of: course)!, section: self.termList.index(of: term)!)
+                    if ignoreCourseList.contains(path){
+                        ignoreCourseList.remove(at: ignoreCourseList.index(of: path)!)
+                        let cell = self.tableView?.cellForRow(at: path) as? GPATableViewCell
+                        cell?.setSwitchValue(isSelected: true)
+                    }
+                }
+            }
+        }
+    }
+    
+    // MARK: - GPATableCellDelegate
+    
+    func didDeselectGPACell(cell: GPATableViewCell?) {
+        let cellPath = self.tableView?.indexPath(for: (cell)!)
+        let newPath = IndexPath.init(row: (cellPath?.row)!, section: (cellPath?.section)!)
+        if !ignoreCourseList.contains(newPath){
+            ignoreCourseList.append(newPath)
+        }
+        self.tableView?.reloadData()
+    }
+    
+    func didSelectGPACell(cell: GPATableViewCell?) {
+        let cellPath = self.tableView?.indexPath(for: (cell)!)
+        let newPath = IndexPath.init(row: (cellPath?.row)!, section: (cellPath?.section)!)
+        if ignoreCourseList.contains(newPath){
+            ignoreCourseList.remove(at: ignoreCourseList.index(of: newPath)!)
+        }
+        self.tableView?.reloadData()
+    }
 }

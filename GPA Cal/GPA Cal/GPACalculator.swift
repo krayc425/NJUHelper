@@ -17,7 +17,7 @@ class GPACalculator: NSObject {
             sum += course.score! * (course.credit ?? 0)
             sumCredit += (course.credit ?? 0)
         }
-        return (sum / sumCredit) / 20
+        return sumCredit == 0 ? 0 :  (sum / sumCredit) / 20
     }
     
 }

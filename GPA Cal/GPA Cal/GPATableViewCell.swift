@@ -7,6 +7,15 @@
 //
 
 import UIKit
+import AIFlatSwitch
+
+protocol GPATableViewCellDelegate {
+
+    func didSelectGPACell(cell: GPATableViewCell?);
+    func didDeselectGPACell(cell: GPATableViewCell?);
+    
+}
+
 
 class GPATableViewCell: UITableViewCell {
     
@@ -15,6 +24,9 @@ class GPATableViewCell: UITableViewCell {
     @IBOutlet var typeLabel: UILabel!
     @IBOutlet var creditLabel: UILabel!
     @IBOutlet var scoreLabel: UILabel!
+    var checkBox: AIFlatSwitch!
+    
+    var delegate: GPATableViewCellDelegate!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,12 +43,29 @@ class GPATableViewCell: UITableViewCell {
         creditLabel.layer.masksToBounds = true
         
         typeLabel.textColor = UIColor.white
+        
+        checkBox = AIFlatSwitch(frame: CGRect.init(x: 18, y: 10, width: 20, height: 20))
+        checkBox.addTarget(self, action: #selector(handleSwitchValueChange(sender:)), for: UIControlEvents.valueChanged)
+        checkBox.lineWidth = 1.0
+        checkBox.setSelected(true, animated: true)
+        self.addSubview(checkBox)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
+    func handleSwitchValueChange(sender: AnyObject) {
+        if sender is AIFlatSwitch {
+            if(sender.isSelected){
+                self.delegate.didSelectGPACell(cell: self)
+            }else{
+                self.delegate.didDeselectGPACell(cell: self)
+            }
+        }
+    }
+    
+    func setSwitchValue(isSelected: Bool) {
+        checkBox.setSelected(isSelected, animated: true)
+    }
 }

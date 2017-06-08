@@ -9,5 +9,6 @@ target 'GPA Cal' do
   
   # Pods for GPA Cal
   pod 'Alamofire'
+  pod 'AIFlatSwitch'
 
 end
