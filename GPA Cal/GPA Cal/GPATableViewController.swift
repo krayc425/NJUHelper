@@ -17,6 +17,8 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     var tableView: UITableView?
     var typeSelectionView: GPATypeSelectionView = GPATypeSelectionView.instanceFromNib()
     
+    var ignoreTypeList = [courseType]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -90,14 +92,14 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let termModel : TermModel = termList[section]
-        return termModel.courseList.count
+        return termModel.filterCourseList(ignoreTypeList: ignoreTypeList).count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as! GPATableViewCell
         
-        let termModel : TermModel = termList[indexPath.section]
-        let course = termModel.courseList[indexPath.row]
+        let termModel: TermModel = termList[indexPath.section]
+        let course = termModel.filterCourseList(ignoreTypeList: ignoreTypeList)[indexPath.row]
         cell.chineseNameLabel.text = course.chineseName
         cell.englishNameLabel.text = course.englishName
         cell.scoreLabel.text = "\(course.score ?? 0.0)"
@@ -125,8 +127,8 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         let headerView = GPATableHeaderView.instanceFromNib()
         let termModel : TermModel = termList[section]
         headerView.termTitleLabel.text = termModel.name
-        headerView.gpaLabel.text = String(format: "%.3f", GPACalculator.calculateGPA(courseList: termModel.courseList))
-        headerView.courseNumLabel.text = String(format: "共 %d 门课程", termModel.courseList.count)
+        headerView.gpaLabel.text = String(format: "%.3f", GPACalculator.calculateGPA(courseList: termModel.filterCourseList(ignoreTypeList: ignoreTypeList)))
+        headerView.courseNumLabel.text = String(format: "共 %d 门课程", termModel.filterCourseList(ignoreTypeList: ignoreTypeList).count)
         return headerView
     }
     
@@ -144,13 +146,13 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - TypeSelectionDelegate
     
-    func didSelectType(courseType: courseType){
-//        for term in self.termList{
-//            for course in term.courseList{
-//                if course.type == courseType
-//            }
-//        }
-        print(courseType.rawValue)
+    func didSelectType(courseType: courseType, isAdding: Bool){
+        if isAdding{
+            ignoreTypeList.append(courseType)
+        }else{
+            ignoreTypeList.remove(at: ignoreTypeList.index(of: courseType)!)
+        }
+        self.tableView?.reloadData()
     }
     
 }

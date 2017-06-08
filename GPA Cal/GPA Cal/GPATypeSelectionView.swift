@@ -10,7 +10,7 @@ import UIKit
 
 protocol TypeSelectionDelegate {
     
-    func didSelectType(courseType: courseType);
+    func didSelectType(courseType: courseType, isAdding: Bool);
     
 }
 
@@ -55,14 +55,16 @@ class GPATypeSelectionView: UIView {
             sender.backgroundColor = self.courseTypeList[sender.tag].backgroundColor
             sender.setTitleColor(UIColor.white, for: UIControlState.normal)
             sender.layer.borderColor = UIColor.clear.cgColor
+            
+            self.delegate?.didSelectType(courseType: courseTypeList[sender.tag], isAdding: false)
         }else{
             selectedType.add(sender.tag)
             sender.setTitleColor(self.courseTypeList[sender.tag].backgroundColor, for: UIControlState.normal)
             sender.backgroundColor = UIColor.white
             sender.layer.borderColor = sender.titleColor(for: UIControlState.normal)?.cgColor
+            
+            self.delegate?.didSelectType(courseType: courseTypeList[sender.tag], isAdding: true)
         }
-    
-        self.delegate?.didSelectType(courseType: courseTypeList[sender.tag])
     }
     
     class func instanceFromNib() -> GPATypeSelectionView {
