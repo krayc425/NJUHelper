@@ -70,4 +70,5 @@ class GPATypeSelectionView: UIView {
     class func instanceFromNib() -> GPATypeSelectionView {
         return UINib(nibName: "GPATypeSelectionView", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! GPATypeSelectionView
     }
+    
 }

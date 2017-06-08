@@ -17,7 +17,6 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     var tableView: UITableView?
     var typeSelectionView: GPATypeSelectionView = GPATypeSelectionView.instanceFromNib()
     
-//    var ignoreTypeList = [courseType]()
     var ignoreCourseList = [IndexPath]()
     
     override func viewDidLoad() {
@@ -97,31 +96,38 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier, for: indexPath) as! GPATableViewCell
+        var cell = self.tableView?.cellForRow(at: indexPath) as? GPATableViewCell
         
-        cell.delegate = self
+        if(cell == nil){
+            let nibList = Bundle.main.loadNibNamed(CellIdentifier, owner: nil, options: nil)
+            cell = nibList?[0] as? GPATableViewCell
+        }
+        
+        cell?.delegate = self
         
         let termModel: TermModel = termList[indexPath.section]
         let course = termModel.courseList[indexPath.row]
-        cell.chineseNameLabel.text = course.chineseName
-        cell.englishNameLabel.text = course.englishName
-        cell.scoreLabel.text = "\(course.score ?? 0.0)"
+        cell?.chineseNameLabel.text = course.chineseName
+        cell?.englishNameLabel.text = course.englishName
+        cell?.scoreLabel.text = "\(course.score ?? 0.0)"
         if course.credit == nil{
-            cell.creditLabel.text = "无学分"
+            cell?.creditLabel.text = "无学分"
         }else{
-            cell.creditLabel.text = "\(course.credit!)" + "学分"
+            cell?.creditLabel.text = "\(course.credit!)" + "学分"
         }
-        cell.typeLabel.text = "\(course.type)"
+        cell?.typeLabel.text = "\(course.type)"
         
         if ignoreCourseList.contains(indexPath){
-            cell.backgroundColor = UIColor.lightGray
-            cell.typeLabel.backgroundColor = UIColor.lightGray
+            cell?.setSwitchValue(isSelected: false, animated: false)
+            cell?.backgroundColor = UIColor.lightGray
+            cell?.typeLabel.backgroundColor = UIColor.lightGray
         }else{
-            cell.backgroundColor = UIColor.white
-            cell.typeLabel.backgroundColor = course.type.backgroundColor
+            cell?.setSwitchValue(isSelected: true, animated: false)
+            cell?.backgroundColor = UIColor.white
+            cell?.typeLabel.backgroundColor = course.type.backgroundColor
         }
     
-        return cell
+        return cell!
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -176,8 +182,6 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
                     let path = IndexPath.init(row: term.courseList.index(of: course)!, section: self.termList.index(of: term)!)
                     if !ignoreCourseList.contains(path){
                         ignoreCourseList.append(path)
-                        let cell = self.tableView?.cellForRow(at: path) as? GPATableViewCell
-                        cell?.setSwitchValue(isSelected: false)
                     }
                 }
             }
@@ -191,8 +195,6 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
                     let path = IndexPath.init(row: term.courseList.index(of: course)!, section: self.termList.index(of: term)!)
                     if ignoreCourseList.contains(path){
                         ignoreCourseList.remove(at: ignoreCourseList.index(of: path)!)
-                        let cell = self.tableView?.cellForRow(at: path) as? GPATableViewCell
-                        cell?.setSwitchValue(isSelected: true)
                     }
                 }
             }
@@ -218,4 +220,5 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         }
         self.tableView?.reloadData()
     }
+    
 }

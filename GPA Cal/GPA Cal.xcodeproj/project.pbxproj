@@ -92,10 +92,7 @@
 			children = (
 				24D827DD1EE681D5006889F0 /* AppDelegate.swift */,
 				24D827F31EE68217006889F0 /* ViewController.swift */,
-				2490D1841EE6FD0500F78151 /* TermModel.swift */,
-				24D827F91EE68827006889F0 /* CourseModel.swift */,
-				2475A2171EE929080077781C /* CourseType.swift */,
-				2458A2341EE84CCD008EC469 /* GPACalculator.swift */,
+				24DBE1631EE982A400E2376F /* Model */,
 				24D827F51EE68228006889F0 /* GPATableViewController.swift */,
 				24D827EF1EE68206006889F0 /* GPATableViewCell.swift */,
 				24D827F01EE68206006889F0 /* GPATableViewCell.xib */,
@@ -108,6 +105,17 @@
 				24D827E91EE681D5006889F0 /* Info.plist */,
 			);
 			path = "GPA Cal";
+			sourceTree = "<group>";
+		};
+		24DBE1631EE982A400E2376F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2490D1841EE6FD0500F78151 /* TermModel.swift */,
+				24D827F91EE68827006889F0 /* CourseModel.swift */,
+				2475A2171EE929080077781C /* CourseType.swift */,
+				2458A2341EE84CCD008EC469 /* GPACalculator.swift */,
+			);
+			name = Model;
 			sourceTree = "<group>";
 		};
 		73BB2A6E808D44FAB21291C1 /* Frameworks */ = {

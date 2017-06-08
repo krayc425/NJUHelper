@@ -16,7 +16,6 @@ protocol GPATableViewCellDelegate {
     
 }
 
-
 class GPATableViewCell: UITableViewCell {
     
     @IBOutlet var chineseNameLabel: UILabel!
@@ -47,7 +46,6 @@ class GPATableViewCell: UITableViewCell {
         checkBox = AIFlatSwitch(frame: CGRect.init(x: 18, y: 10, width: 20, height: 20))
         checkBox.addTarget(self, action: #selector(handleSwitchValueChange(sender:)), for: UIControlEvents.valueChanged)
         checkBox.lineWidth = 1.0
-        checkBox.setSelected(true, animated: true)
         self.addSubview(checkBox)
     }
 
@@ -65,7 +63,8 @@ class GPATableViewCell: UITableViewCell {
         }
     }
     
-    func setSwitchValue(isSelected: Bool) {
-        checkBox.setSelected(isSelected, animated: true)
+    func setSwitchValue(isSelected: Bool, animated: Bool) {
+        checkBox.setSelected(isSelected, animated: animated)
     }
+    
 }
