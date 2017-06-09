@@ -27,8 +27,8 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hVY-0z-WlK">
-                        <rect key="frame" x="76" y="0.0" width="244" height="49.5"/>
+                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hVY-0z-WlK">
+                        <rect key="frame" x="76" y="0.0" width="234" height="49.5"/>
                         <nil key="textColor"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <textInputTraits key="textInputTraits"/>
@@ -37,13 +37,14 @@
                 <constraints>
                     <constraint firstItem="1qe-Wy-C0H" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1or-Jz-G1V"/>
                     <constraint firstItem="hVY-0z-WlK" firstAttribute="leading" secondItem="1qe-Wy-C0H" secondAttribute="trailing" constant="10" id="4DD-o1-iP6"/>
-                    <constraint firstAttribute="trailing" secondItem="hVY-0z-WlK" secondAttribute="trailing" id="5jx-Gg-Ehf"/>
+                    <constraint firstAttribute="trailing" secondItem="hVY-0z-WlK" secondAttribute="trailing" constant="10" id="5jx-Gg-Ehf"/>
                     <constraint firstItem="hVY-0z-WlK" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="LTC-Cn-wIf"/>
                     <constraint firstItem="hVY-0z-WlK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="M3N-uf-TwZ"/>
                     <constraint firstAttribute="bottom" secondItem="hVY-0z-WlK" secondAttribute="bottom" id="ZZA-9V-L44"/>
                     <constraint firstItem="1qe-Wy-C0H" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="8" id="kNw-U1-JuH"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="loginLabel" destination="1qe-Wy-C0H" id="Wae-4R-qm4"/>
                 <outlet property="loginText" destination="hVY-0z-WlK" id="Vzb-nW-fAi"/>

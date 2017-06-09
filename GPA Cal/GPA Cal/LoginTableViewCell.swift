@@ -18,7 +18,7 @@ class LoginTableViewCell: UITableViewCell {
         
         //Label
         loginLabel?.font = UIFont.init(name: "PingFangSC-Regular", size: 15.0);
-        loginLabel?.textColor = UIColor.lightGray
+        loginLabel?.textColor = UIColor.gray
         loginLabel?.sizeToFit()
         
         //Text

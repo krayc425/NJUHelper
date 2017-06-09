@@ -16,6 +16,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     var termList = [TermModel]()
     var tableView: UITableView?
     var typeSelectionView: GPATypeSelectionView = GPATypeSelectionView.instanceFromNib()
+    var headerView: GPATableHeaderView?
     
     var ignoreCourseSet = Set<IndexPath>()
     
@@ -28,7 +29,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
  
-        self.tableView = UITableView(frame: CGRect(x: 0, y: statusbarHeight, width: displayWidth, height: displayHeight - statusbarHeight), style: UITableViewStyle.grouped)
+        self.tableView = UITableView(frame: CGRect(x: 0, y: statusbarHeight + 60, width: displayWidth, height: displayHeight - statusbarHeight - 60), style: UITableViewStyle.grouped)
         self.tableView!.delegate = self
         self.tableView!.dataSource = self
         let nib = UINib(nibName: CellIdentifier, bundle: nil)
@@ -38,10 +39,44 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         self.typeSelectionView.frame = CGRect(x: 0, y: 64, width: displayWidth, height: statusbarHeight)
         self.typeSelectionView.delegate = self
         self.view.addSubview(self.typeSelectionView)
+        
+        headerView = GPATableHeaderView.instanceFromNib()
+        headerView?.frame = CGRect(x: 0, y: 64 + statusbarHeight, width: displayWidth, height: 60)
+        headerView?.termTitleLabel.text = "全部"
+        self.view.addSubview(headerView!)
+        
+        let backItem = UIBarButtonItem.init(image: UIImage.init(named: "NAV_BACK"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(backAction))
+        backItem.tintColor = UIColor.black
+        self.navigationItem.leftBarButtonItem = backItem
+        
+        reloadAllGPA()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func backAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    func reloadMyTableView() {
+        self.tableView?.reloadData()
+        reloadAllGPA()
+    }
+    
+    func reloadAllGPA() {
+        var allCourseList = [CourseModel]()
+        for term in termList{
+            allCourseList.append(contentsOf: term.courseList.filter{
+                
+                let coursePath = IndexPath.init(row: term.courseList.index(of: $0)!, section: termList.index(of: term)!)
+                return !ignoreCourseSet.contains(coursePath)
+                
+            })
+        }
+        headerView?.gpaLabel.text = String(format: "%.3f", GPACalculator.calculateGPA(courseList: allCourseList))
+        headerView?.courseNumLabel.text = String(format: "共 %d 门课程", allCourseList.count)
     }
 
     // MARK: - Table view data source
@@ -91,7 +126,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 64.0
+        return 60.0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -102,7 +137,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         }else{
             ignoreCourseSet.insert(path)
         }
-        self.tableView?.reloadData()
+        reloadMyTableView()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -120,7 +155,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 80.0
+        return 60.0
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?{
@@ -139,7 +174,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         }else{
             self.notIgnoreCourseOfType(courseType: courseType)
         }
-        self.tableView?.reloadData()
+        reloadMyTableView()
     }
     
     func ignoreCourseOfType(courseType: courseType) {
@@ -176,7 +211,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         if !ignoreCourseSet.contains(newPath){
             ignoreCourseSet.insert(newPath)
         }
-        self.tableView?.reloadData()
+        reloadMyTableView()
     }
     
     func didSelectGPACell(cell: GPATableViewCell?) {
@@ -185,7 +220,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         if ignoreCourseSet.contains(newPath){
             ignoreCourseSet.remove(newPath)
         }
-        self.tableView?.reloadData()
+        reloadMyTableView()
     }
     
 }

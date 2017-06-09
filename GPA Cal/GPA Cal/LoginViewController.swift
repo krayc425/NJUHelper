@@ -33,7 +33,7 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.view.addSubview(self.loginTableView!)
         
         //Button
-        self.loginButton = UIButton.init(frame: CGRect(x: self.view.center.x - 40, y: (self.loginTableView?.frame.size.height)! + 64, width: 80, height: 40))
+        self.loginButton = UIButton.init(frame: CGRect(x: self.view.center.x - 40, y: (self.loginTableView?.frame.size.height)! + 84, width: 80, height: 40))
         self.loginButton?.setTitle("登录", for:  UIControlState.normal)
         self.loginButton?.setTitleColor(UIColor.white, for: UIControlState.normal)
         self.loginButton?.layer.backgroundColor = UIColor.init(red: 90.0/255.0, green: 169.0/255.0, blue: 169.0/255.0, alpha: 1.0).cgColor
@@ -41,6 +41,13 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.loginButton?.layer.masksToBounds = true
         self.loginButton?.addTarget(self, action: #selector(loginAction(sender:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(self.loginButton!)
+        
+        //Label
+        let safetyLabel = UILabel.init(frame: CGRect(x: 18, y: (self.loginTableView?.frame.size.height)! + 35, width: self.view.bounds.size.width - 18, height: 20))
+        safetyLabel.text = "用户名和密码信息仅存储在本地，请放心使用"
+        safetyLabel.font = UIFont.init(name: "PingFangSC-Light", size: 11.0)
+        safetyLabel.textColor = UIColor.lightGray
+        self.view.addSubview(safetyLabel)
     }
 
     override func didReceiveMemoryWarning() {
