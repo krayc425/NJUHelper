@@ -14,19 +14,21 @@
 		2475A2161EE9271C0077781C /* GPATypeSelectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2475A2151EE9271B0077781C /* GPATypeSelectionView.xib */; };
 		2475A2181EE929080077781C /* CourseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2475A2171EE929080077781C /* CourseType.swift */; };
 		247C5CCF1EE9ABEF00F60EE5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247C5CCD1EE9ABEF00F60EE5 /* LoginViewController.swift */; };
-		247C5CD01EE9ABEF00F60EE5 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 247C5CCE1EE9ABEF00F60EE5 /* LoginViewController.xib */; };
+		247C5CD51EEA3C0D00F60EE5 /* LoginTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 247C5CD31EEA3C0D00F60EE5 /* LoginTableViewCell.swift */; };
+		247C5CD61EEA3C0D00F60EE5 /* LoginTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 247C5CD41EEA3C0D00F60EE5 /* LoginTableViewCell.xib */; };
+		247C5CD91EEA494C00F60EE5 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247C5CD81EEA494C00F60EE5 /* SVProgressHUD.framework */; };
 		2490D1831EE6F8CC00F78151 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */; };
 		2490D1851EE6FD0500F78151 /* TermModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2490D1841EE6FD0500F78151 /* TermModel.swift */; };
 		24D827DE1EE681D5006889F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827DD1EE681D5006889F0 /* AppDelegate.swift */; };
 		24D827E51EE681D5006889F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24D827E41EE681D5006889F0 /* Assets.xcassets */; };
 		24D827F11EE68206006889F0 /* GPATableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827EF1EE68206006889F0 /* GPATableViewCell.swift */; };
 		24D827F21EE68206006889F0 /* GPATableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24D827F01EE68206006889F0 /* GPATableViewCell.xib */; };
-		24D827F41EE68217006889F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827F31EE68217006889F0 /* ViewController.swift */; };
 		24D827F71EE68228006889F0 /* GPATableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827F51EE68228006889F0 /* GPATableViewController.swift */; };
 		24D827FA1EE68827006889F0 /* CourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827F91EE68827006889F0 /* CourseModel.swift */; };
 		24DBE15F1EE9746A00E2376F /* AIFlatSwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DBE15D1EE973A000E2376F /* AIFlatSwitch.framework */; };
 		24DBE1601EE9746A00E2376F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DBE1591EE9706300E2376F /* Alamofire.framework */; };
 		24DBE1621EE9746A00E2376F /* Pods_GPA_Cal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DBE1611EE9746A00E2376F /* Pods_GPA_Cal.framework */; };
+		8D596594D83A27437BC65D6F /* Pods_GPA_Cal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 329DE7FC09D480849C36273C /* Pods_GPA_Cal.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +39,10 @@
 		2475A2151EE9271B0077781C /* GPATypeSelectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPATypeSelectionView.xib; sourceTree = "<group>"; };
 		2475A2171EE929080077781C /* CourseType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseType.swift; sourceTree = "<group>"; };
 		247C5CCD1EE9ABEF00F60EE5 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		247C5CCE1EE9ABEF00F60EE5 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		247C5CD31EEA3C0D00F60EE5 /* LoginTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginTableViewCell.swift; sourceTree = "<group>"; };
+		247C5CD41EEA3C0D00F60EE5 /* LoginTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginTableViewCell.xib; sourceTree = "<group>"; };
+		247C5CD81EEA494C00F60EE5 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/GPA_Cal-diujhrelirnfdldmlynqrizmaehy/Build/Products/Debug-iphonesimulator/SVProgressHUD/SVProgressHUD.framework"; sourceTree = "<group>"; };
+		247C5CDA1EEA49AE00F60EE5 /* GPA_Cal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GPA_Cal-Bridging-Header.h"; sourceTree = "<group>"; };
 		2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2490D1841EE6FD0500F78151 /* TermModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermModel.swift; sourceTree = "<group>"; };
 		24BC419E1EE6F6E30020B78D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
@@ -47,7 +52,6 @@
 		24D827E91EE681D5006889F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		24D827EF1EE68206006889F0 /* GPATableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPATableViewCell.swift; sourceTree = "<group>"; };
 		24D827F01EE68206006889F0 /* GPATableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GPATableViewCell.xib; sourceTree = "<group>"; };
-		24D827F31EE68217006889F0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		24D827F51EE68228006889F0 /* GPATableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPATableViewController.swift; sourceTree = "<group>"; };
 		24D827F91EE68827006889F0 /* CourseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseModel.swift; sourceTree = "<group>"; };
 		24DBE1591EE9706300E2376F /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/GPA_Cal-diujhrelirnfdldmlynqrizmaehy/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
@@ -64,9 +68,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				247C5CD91EEA494C00F60EE5 /* SVProgressHUD.framework in Frameworks */,
 				24DBE1621EE9746A00E2376F /* Pods_GPA_Cal.framework in Frameworks */,
 				24DBE15F1EE9746A00E2376F /* AIFlatSwitch.framework in Frameworks */,
 				24DBE1601EE9746A00E2376F /* Alamofire.framework in Frameworks */,
+				8D596594D83A27437BC65D6F /* Pods_GPA_Cal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,7 +83,8 @@
 			isa = PBXGroup;
 			children = (
 				247C5CCD1EE9ABEF00F60EE5 /* LoginViewController.swift */,
-				247C5CCE1EE9ABEF00F60EE5 /* LoginViewController.xib */,
+				247C5CD31EEA3C0D00F60EE5 /* LoginTableViewCell.swift */,
+				247C5CD41EEA3C0D00F60EE5 /* LoginTableViewCell.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -118,11 +125,11 @@
 			isa = PBXGroup;
 			children = (
 				24D827DD1EE681D5006889F0 /* AppDelegate.swift */,
-				24D827F31EE68217006889F0 /* ViewController.swift */,
 				24DBE1631EE982A400E2376F /* Model */,
 				247C5CD11EE9ABF800F60EE5 /* Login */,
 				247C5CD21EE9AC0200F60EE5 /* GPA Table */,
 				24D827E41EE681D5006889F0 /* Assets.xcassets */,
+				247C5CDA1EEA49AE00F60EE5 /* GPA_Cal-Bridging-Header.h */,
 				2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */,
 				24D827E91EE681D5006889F0 /* Info.plist */,
 			);
@@ -143,6 +150,7 @@
 		73BB2A6E808D44FAB21291C1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				247C5CD81EEA494C00F60EE5 /* SVProgressHUD.framework */,
 				24DBE1611EE9746A00E2376F /* Pods_GPA_Cal.framework */,
 				24DBE15D1EE973A000E2376F /* AIFlatSwitch.framework */,
 				24DBE1591EE9706300E2376F /* Alamofire.framework */,
@@ -228,7 +236,7 @@
 			files = (
 				2490D1831EE6F8CC00F78151 /* Launch Screen.storyboard in Resources */,
 				24D827F21EE68206006889F0 /* GPATableViewCell.xib in Resources */,
-				247C5CD01EE9ABEF00F60EE5 /* LoginViewController.xib in Resources */,
+				247C5CD61EEA3C0D00F60EE5 /* LoginTableViewCell.xib in Resources */,
 				24D827E51EE681D5006889F0 /* Assets.xcassets in Resources */,
 				2458A22F1EE8445C008EC469 /* GPATableHeaderView.xib in Resources */,
 				2475A2161EE9271C0077781C /* GPATypeSelectionView.xib in Resources */,
@@ -293,10 +301,10 @@
 				2475A2181EE929080077781C /* CourseType.swift in Sources */,
 				2458A2351EE84CCD008EC469 /* GPACalculator.swift in Sources */,
 				2475A2141EE9270E0077781C /* GPATypeSelectionView.swift in Sources */,
-				24D827F41EE68217006889F0 /* ViewController.swift in Sources */,
 				24D827FA1EE68827006889F0 /* CourseModel.swift in Sources */,
 				2490D1851EE6FD0500F78151 /* TermModel.swift in Sources */,
 				24D827F11EE68206006889F0 /* GPATableViewCell.swift in Sources */,
+				247C5CD51EEA3C0D00F60EE5 /* LoginTableViewCell.swift in Sources */,
 				2458A2311EE84476008EC469 /* GPATableHeaderView.swift in Sources */,
 				24D827F71EE68228006889F0 /* GPATableViewController.swift in Sources */,
 				24D827DE1EE681D5006889F0 /* AppDelegate.swift in Sources */,
@@ -419,14 +427,17 @@
 			baseConfigurationReference = 3FAFF1D6DF0CA9459E0DC6D5 /* Pods-GPA Cal.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VEBQ28K9EA;
 				INFOPLIST_FILE = "GPA Cal/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.krayc.GPA-Cal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GPA Cal/GPA_Cal-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Debug;
 		};
@@ -435,14 +446,17 @@
 			baseConfigurationReference = 7B9EBE7AC2D1DF6347BF52E8 /* Pods-GPA Cal.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VEBQ28K9EA;
 				INFOPLIST_FILE = "GPA Cal/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.krayc.GPA-Cal";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GPA Cal/GPA_Cal-Bridging-Header.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 3.0;
+				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
 			};
 			name = Release;
 		};

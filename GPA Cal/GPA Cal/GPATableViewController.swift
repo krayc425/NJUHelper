@@ -22,6 +22,8 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "GPA"
+        
         let statusbarHeight: CGFloat = 40.0
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
@@ -40,47 +42,6 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        let username = "141210026", password = "Songkuixi+xw7"
-        let requestURL = "http://120.25.196.24:8001/gpa/username=\(username)&password=\(password)"
-        
-        Alamofire.request(requestURL).responseJSON { response in
-            debugPrint(response)
-            if let json = response.result.value {
-                let array = json as! Array<AnyObject>
-                var resultList = [TermModel]()
-                for dict in array{
-                    let termName = dict["term"] as! String
-                    let courseArr = dict["course_list"] as! Array<AnyObject>
-                    var courseList = [CourseModel]()
-                    for subCourseDict in courseArr{
-                        let chineseName = subCourseDict["chinese_name"] as? String ?? ""
-                        let englishName = subCourseDict["english_name"] as? String ?? ""
-                        let credit : Float?
-                        let type  = subCourseDict["type"] as? String ?? "通修"
-                        if subCourseDict["credit"] as! String != ""{
-                            credit = Float(subCourseDict["credit"] as! String)
-                        }else{
-                            credit = nil
-                        }
-                        let score : Float? = Float(subCourseDict["score"] as! String)
-                        let courseModel = CourseModel()
-                        courseModel.chineseName = chineseName
-                        courseModel.englishName = englishName
-                        courseModel.score = score
-                        courseModel.credit = credit
-                        courseModel.type = courseType(rawValue: type)!
-                        courseList.append(courseModel)
-                    }
-                    let termModel = TermModel(name: termName, courseList: courseList)
-                    resultList.append(termModel)
-                }
-                self.termList = resultList
-                self.tableView!.reloadData()
-            }
-        }
     }
 
     // MARK: - Table view data source
@@ -170,7 +131,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         return 0.00001
     }
     
-    // MARK: - TypeSelectionDelegate
+    // MARK: - Type Selection Delegate
     
     func didSelectType(courseType: courseType, isAdding: Bool){
         if isAdding{
@@ -207,7 +168,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         }
     }
     
-    // MARK: - GPATableCellDelegate
+    // MARK: - GPATableCell Delegate
     
     func didDeselectGPACell(cell: GPATableViewCell?) {
         let cellPath = self.tableView?.indexPath(for: (cell)!)
