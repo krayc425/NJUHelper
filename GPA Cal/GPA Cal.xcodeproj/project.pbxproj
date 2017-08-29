@@ -19,6 +19,8 @@
 		247C5CD91EEA494C00F60EE5 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 247C5CD81EEA494C00F60EE5 /* SVProgressHUD.framework */; };
 		2490D1831EE6F8CC00F78151 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */; };
 		2490D1851EE6FD0500F78151 /* TermModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2490D1841EE6FD0500F78151 /* TermModel.swift */; };
+		24BAAE0F1F528DCB002765CD /* LoginCaptchaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24BAAE0D1F528DCB002765CD /* LoginCaptchaTableViewCell.swift */; };
+		24BAAE101F528DCB002765CD /* LoginCaptchaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 24BAAE0E1F528DCB002765CD /* LoginCaptchaTableViewCell.xib */; };
 		24D827DE1EE681D5006889F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827DD1EE681D5006889F0 /* AppDelegate.swift */; };
 		24D827E51EE681D5006889F0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24D827E41EE681D5006889F0 /* Assets.xcassets */; };
 		24D827F11EE68206006889F0 /* GPATableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D827EF1EE68206006889F0 /* GPATableViewCell.swift */; };
@@ -45,6 +47,8 @@
 		247C5CDA1EEA49AE00F60EE5 /* GPA_Cal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GPA_Cal-Bridging-Header.h"; sourceTree = "<group>"; };
 		2490D1821EE6F8CC00F78151 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2490D1841EE6FD0500F78151 /* TermModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TermModel.swift; sourceTree = "<group>"; };
+		24BAAE0D1F528DCB002765CD /* LoginCaptchaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCaptchaTableViewCell.swift; sourceTree = "<group>"; };
+		24BAAE0E1F528DCB002765CD /* LoginCaptchaTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginCaptchaTableViewCell.xib; sourceTree = "<group>"; };
 		24BC419E1EE6F6E30020B78D /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		24D827DA1EE681D5006889F0 /* GPA Cal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPA Cal.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		24D827DD1EE681D5006889F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +89,8 @@
 				247C5CCD1EE9ABEF00F60EE5 /* LoginViewController.swift */,
 				247C5CD31EEA3C0D00F60EE5 /* LoginTableViewCell.swift */,
 				247C5CD41EEA3C0D00F60EE5 /* LoginTableViewCell.xib */,
+				24BAAE0D1F528DCB002765CD /* LoginCaptchaTableViewCell.swift */,
+				24BAAE0E1F528DCB002765CD /* LoginCaptchaTableViewCell.xib */,
 			);
 			name = Login;
 			sourceTree = "<group>";
@@ -240,6 +246,7 @@
 				24D827E51EE681D5006889F0 /* Assets.xcassets in Resources */,
 				2458A22F1EE8445C008EC469 /* GPATableHeaderView.xib in Resources */,
 				2475A2161EE9271C0077781C /* GPATypeSelectionView.xib in Resources */,
+				24BAAE101F528DCB002765CD /* LoginCaptchaTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,9 +259,20 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-GPA Cal/Pods-GPA Cal-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AIFlatSwitch/AIFlatSwitch.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AIFlatSwitch.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -282,13 +300,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GPA Cal-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -304,6 +325,7 @@
 				24D827FA1EE68827006889F0 /* CourseModel.swift in Sources */,
 				2490D1851EE6FD0500F78151 /* TermModel.swift in Sources */,
 				24D827F11EE68206006889F0 /* GPATableViewCell.swift in Sources */,
+				24BAAE0F1F528DCB002765CD /* LoginCaptchaTableViewCell.swift in Sources */,
 				247C5CD51EEA3C0D00F60EE5 /* LoginTableViewCell.swift in Sources */,
 				2458A2311EE84476008EC469 /* GPATableHeaderView.swift in Sources */,
 				24D827F71EE68228006889F0 /* GPATableViewController.swift in Sources */,
@@ -429,6 +451,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VEBQ28K9EA;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "GPA Cal/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -448,6 +471,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = VEBQ28K9EA;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "GPA Cal/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

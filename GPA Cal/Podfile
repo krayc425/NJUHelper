@@ -11,5 +11,15 @@ target 'GPA Cal' do
   pod 'Alamofire'
   pod 'AIFlatSwitch'
   pod 'SVProgressHUD'
+  pod 'Kingfisher'
+  pod 'TesseractOCRiOS'
 
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    target.build_configurations.each do |config|
+      config.build_settings['ENABLE_BITCODE'] = 'NO'
+    end
+  end
 end

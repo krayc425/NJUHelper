@@ -41,15 +41,17 @@ def getUserAgentHeader():
 
 
 
-def getGPA(request, username, password):
-    # try:
+def getGPA(request, username, password, validateCode):
+    try:
         postdata = {
             'userName': username,
-            'password': password
+            'password': password,
+            'ValidateCode': validateCode,
+            'returnUrl': None
         }
 
         # # 登录教务系统的URL
-        loginUrl = 'http://jw.nju.edu.cn:8080/jiaowu/login.do'
+        loginUrl = 'http://elite.nju.edu.cn/jiaowu/login.do'
 
         cookie = cookiejar.CookieJar()  # 创建cookiejar用于保存cookie
         cjhdr = urllib.request.HTTPCookieProcessor(cookie)  # 创建cookiehandler用于管理http的cookie
@@ -59,7 +61,7 @@ def getGPA(request, username, password):
         loginRequest = urllib.request.Request(loginUrl, loginPostData, method='POST')  # 创建post请求
         response = opener.open(loginRequest)  # 请求request
 
-        commonUrl = 'http://jw.nju.edu.cn:8080/jiaowu/student/studentinfo/achievementinfo.do?method=searchTermList'
+        commonUrl = 'http://elite.nju.edu.cn/jiaowu/student/studentinfo/achievementinfo.do?method=searchTermList'
         get_request = urllib.request.Request(commonUrl)  # 创建request
         commonPage = opener.open(get_request).read().decode()
 
@@ -71,7 +73,7 @@ def getGPA(request, username, password):
         for item in termItems:
             term_list = []
             # 利用cookie请求访问另一个网址
-            gradeUrl = 'http://jw.nju.edu.cn:8080/jiaowu/' + item
+            gradeUrl = 'http://elite.nju.edu.cn/jiaowu/' + item
             # 请求访问该网址
             get_request = urllib.request.Request(gradeUrl)  # 创建request
             gradePage = opener.open(get_request).read().decode()
@@ -103,6 +105,6 @@ def getGPA(request, username, password):
             term_dict["course_list"] = term_list
             result_list.append(term_dict)
         return HttpResponse(json.dumps(result_list, ensure_ascii=False))
-    # except:
-        # return HttpResponse("Fail")
+    except Exception as e:
+        log('Reason:', e)       # Important!
 

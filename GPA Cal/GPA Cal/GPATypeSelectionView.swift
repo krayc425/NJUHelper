@@ -50,7 +50,7 @@ class GPATypeSelectionView: UIView {
         }
     }
     
-    func buttonAction(sender: UIButton) -> () {
+    @objc func buttonAction(sender: UIButton) -> () {
         if selectedType.contains(sender.tag) {
             selectedType.remove(sender.tag)
             sender.backgroundColor = self.courseTypeList[sender.tag].backgroundColor
@@ -58,7 +58,7 @@ class GPATypeSelectionView: UIView {
             sender.layer.borderColor = UIColor.clear.cgColor
             
             self.delegate?.didSelectType(courseType: courseTypeList[sender.tag], isAdding: false)
-        }else{
+        } else {
             selectedType.add(sender.tag)
             sender.setTitleColor(self.courseTypeList[sender.tag].backgroundColor, for: UIControlState.normal)
             sender.backgroundColor = UIColor.white

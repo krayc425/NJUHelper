@@ -53,7 +53,7 @@ class GPATableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    func handleSwitchValueChange(sender: AnyObject) {
+    @objc func handleSwitchValueChange(sender: AnyObject) {
         if sender is AIFlatSwitch {
             if(sender.isSelected){
                 self.delegate.didSelectGPACell(cell: self)

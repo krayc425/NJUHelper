@@ -10,19 +10,19 @@ import UIKit
 
 class LoginTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var loginLabel: UILabel?
-    @IBOutlet weak var loginText: UITextField?
+    @IBOutlet weak var loginLabel: UILabel!
+    @IBOutlet weak var loginText: UITextField!
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
         //Label
-        loginLabel?.font = UIFont.init(name: "PingFangSC-Regular", size: 15.0);
-        loginLabel?.textColor = UIColor.gray
-        loginLabel?.sizeToFit()
+        loginLabel.font = UIFont.init(name: "PingFangSC-Regular", size: 15.0);
+        loginLabel.textColor = UIColor.gray
+        loginLabel.sizeToFit()
         
         //Text
-        loginText?.font = UIFont.init(name: "PingFangSC-Regular", size: 15.0);
+        loginText.font = UIFont.init(name: "PingFangSC-Regular", size: 15.0);
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -15,20 +15,23 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var loginButton: UIButton?
     var userNameText: UITextField?
     var passwordText: UITextField?
+    var validateCodeText: UITextField?
     
     let cellIdentifier = "LoginTableViewCell"
+    let cellCaptchaIdentifier = "LoginCaptchaTableViewCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Login"
+        self.navigationItem.title = "Login"
         
         //TableView
-        self.loginTableView = UITableView(frame: CGRect.init(x: 0, y: 64, width: self.view.bounds.size.width, height: 200), style: UITableViewStyle.plain)
+        self.loginTableView = UITableView(frame: CGRect.init(x: 0, y: 64, width: self.view.bounds.size.width, height: 250), style: .grouped)
         self.loginTableView!.delegate = self
         self.loginTableView!.dataSource = self
-        let nib = UINib(nibName: cellIdentifier, bundle: nil)
-        self.loginTableView!.register(nib, forCellReuseIdentifier: cellIdentifier)
+        self.loginTableView?.backgroundColor = .clear
+        self.loginTableView!.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        self.loginTableView?.register(UINib(nibName: cellCaptchaIdentifier, bundle: nil), forCellReuseIdentifier: cellCaptchaIdentifier)
         self.loginTableView?.isScrollEnabled = false
         self.view.addSubview(self.loginTableView!)
         
@@ -41,13 +44,6 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.loginButton?.layer.masksToBounds = true
         self.loginButton?.addTarget(self, action: #selector(loginAction(sender:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(self.loginButton!)
-        
-        //Label
-        let safetyLabel = UILabel.init(frame: CGRect(x: 18, y: (self.loginTableView?.frame.size.height)! + 35, width: self.view.bounds.size.width - 18, height: 20))
-        safetyLabel.text = "用户名和密码信息仅存储在本地，请放心使用"
-        safetyLabel.font = UIFont.init(name: "PingFangSC-Light", size: 11.0)
-        safetyLabel.textColor = UIColor.lightGray
-        self.view.addSubview(safetyLabel)
     }
 
     override func didReceiveMemoryWarning() {
@@ -56,11 +52,11 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: - Login Action
     
-    func loginAction(sender: UIButton) {
+    @objc func loginAction(sender: UIButton) {
         SVProgressHUD.show()
         
-        let username = (userNameText?.text)!, password = (passwordText?.text)!
-        let requestURL = "http://120.25.196.24:8001/gpa/username=\(username)&password=\(password)"
+        let username = (userNameText?.text)!, password = (passwordText?.text)!, validateCode = (validateCodeText?.text)!
+        let requestURL = "http://120.25.196.24:8001/gpa/username=\(username)&password=\(password)&validateCode=\(validateCode)"
         
         Alamofire.request(requestURL).responseJSON { response in
             debugPrint(response)
@@ -69,18 +65,18 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                 
                 let array = json as! Array<AnyObject>
                 
-                if array.count == 0{
+                guard array.count > 0 else {
                     let alertC = UIAlertController.init(title: "登录失败", message:nil, preferredStyle: UIAlertControllerStyle.alert)
                     let OKAction = UIAlertAction.init(title: "好的", style: UIAlertActionStyle.default, handler:nil)
                     alertC.addAction(OKAction)
                     self.present(alertC, animated: true, completion:nil)
                     
                     return
-                }else{
-                    UserDefaults.standard.set(username, forKey: "username")
-                    UserDefaults.standard.set(password, forKey: "password")
-                    UserDefaults.standard.synchronize()
                 }
+            
+                UserDefaults.standard.set(username, forKey: "username")
+                UserDefaults.standard.set(password, forKey: "password")
+                UserDefaults.standard.synchronize()
                 
                 var resultList = [TermModel]()
                 for dict in array{
@@ -120,37 +116,48 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: - Table view data source
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
-    }
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 3
+    }
         
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! LoginTableViewCell
         
-        if indexPath.row == 0{
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! LoginTableViewCell
             cell.loginLabel?.text = "用户名"
             let username = UserDefaults.standard.value(forKey: "username") as? String
             cell.loginText?.text = username ?? ""
             
             userNameText = cell.loginText
-        }else{
+            return cell
+        } else if indexPath.row == 1 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! LoginTableViewCell
             cell.loginLabel?.text = "密码"
             cell.loginText?.isSecureTextEntry = true
             let password = UserDefaults.standard.value(forKey: "password") as? String
             cell.loginText?.text = password ?? ""
             
             passwordText = cell.loginText
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCell(withIdentifier: cellCaptchaIdentifier, for: indexPath) as! LoginCaptchaTableViewCell
+            
+            validateCodeText = cell.captchaText
+            return cell
         }
         
-        return cell
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
+    }
+    
+    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "用户名和密码信息仅存储在本地，请放心使用"
     }
     
 }

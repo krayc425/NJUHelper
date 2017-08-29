@@ -23,7 +23,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "GPA"
+        self.navigationItem.title = "GPA"
         
         let statusbarHeight: CGFloat = 40.0
         let displayWidth: CGFloat = self.view.frame.width
@@ -56,7 +56,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         super.didReceiveMemoryWarning()
     }
     
-    func backAction() {
+    @objc func backAction() {
         self.navigationController?.popViewController(animated: true)
     }
     
