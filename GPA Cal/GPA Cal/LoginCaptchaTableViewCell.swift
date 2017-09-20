@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import Kingfisher
+import Alamofire
 
 class LoginCaptchaTableViewCell: UITableViewCell {
     
     @IBOutlet weak var captchaLabel: UILabel!
     @IBOutlet weak var captchaText: UITextField!
     @IBOutlet weak var captchaButton: UIButton!
-    
-    let url = URL(string: "http://elite.nju.edu.cn/jiaowu/ValidateCode.jsp")
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,21 +23,10 @@ class LoginCaptchaTableViewCell: UITableViewCell {
         captchaLabel.sizeToFit()
         
         captchaText.font = UIFont.init(name: "PingFangSC-Regular", size: 15.0)
-        
-        refreshCaptcha()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-    }
-    
-    @IBAction func refreshCaptcha() {
-        self.captchaButton.kf.setBackgroundImage(with: url,
-                                                   for: .normal,
-                                                   placeholder: nil,
-                                                   options: [.forceRefresh],
-                                                   progressBlock: nil,
-                                                   completionHandler: nil)
     }
     
 }

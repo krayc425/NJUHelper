@@ -11,8 +11,6 @@ target 'GPA Cal' do
   pod 'Alamofire'
   pod 'AIFlatSwitch'
   pod 'SVProgressHUD'
-  pod 'Kingfisher'
-  pod 'TesseractOCRiOS'
 
 end
 

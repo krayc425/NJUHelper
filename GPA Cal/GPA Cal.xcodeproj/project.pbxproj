@@ -30,6 +30,7 @@
 		24DBE15F1EE9746A00E2376F /* AIFlatSwitch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DBE15D1EE973A000E2376F /* AIFlatSwitch.framework */; };
 		24DBE1601EE9746A00E2376F /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DBE1591EE9706300E2376F /* Alamofire.framework */; };
 		24DBE1621EE9746A00E2376F /* Pods_GPA_Cal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24DBE1611EE9746A00E2376F /* Pods_GPA_Cal.framework */; };
+		24FACDE91F72AD9D005B8052 /* GPAConverter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FACDE81F72AD9D005B8052 /* GPAConverter.swift */; };
 		8D596594D83A27437BC65D6F /* Pods_GPA_Cal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 329DE7FC09D480849C36273C /* Pods_GPA_Cal.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +63,7 @@
 		24DBE15A1EE9706300E2376F /* M13Checkbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = M13Checkbox.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/GPA_Cal-diujhrelirnfdldmlynqrizmaehy/Build/Products/Debug-iphonesimulator/M13Checkbox/M13Checkbox.framework"; sourceTree = "<group>"; };
 		24DBE15D1EE973A000E2376F /* AIFlatSwitch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AIFlatSwitch.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/GPA_Cal-diujhrelirnfdldmlynqrizmaehy/Build/Products/Debug-iphonesimulator/AIFlatSwitch/AIFlatSwitch.framework"; sourceTree = "<group>"; };
 		24DBE1611EE9746A00E2376F /* Pods_GPA_Cal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_GPA_Cal.framework; path = "../../../../../Library/Developer/Xcode/DerivedData/GPA_Cal-diujhrelirnfdldmlynqrizmaehy/Build/Products/Debug-iphonesimulator/Pods_GPA_Cal.framework"; sourceTree = "<group>"; };
+		24FACDE81F72AD9D005B8052 /* GPAConverter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPAConverter.swift; sourceTree = "<group>"; };
 		329DE7FC09D480849C36273C /* Pods_GPA_Cal.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPA_Cal.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3FAFF1D6DF0CA9459E0DC6D5 /* Pods-GPA Cal.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPA Cal.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GPA Cal/Pods-GPA Cal.debug.xcconfig"; sourceTree = "<group>"; };
 		7B9EBE7AC2D1DF6347BF52E8 /* Pods-GPA Cal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPA Cal.release.xcconfig"; path = "Pods/Target Support Files/Pods-GPA Cal/Pods-GPA Cal.release.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				24D827F91EE68827006889F0 /* CourseModel.swift */,
 				2475A2171EE929080077781C /* CourseType.swift */,
 				2458A2341EE84CCD008EC469 /* GPACalculator.swift */,
+				24FACDE81F72AD9D005B8052 /* GPAConverter.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -262,17 +265,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-GPA Cal/Pods-GPA Cal-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AIFlatSwitch/AIFlatSwitch.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
-				"${BUILT_PRODUCTS_DIR}/TesseractOCRiOS/TesseractOCR.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AIFlatSwitch.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TesseractOCR.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -330,6 +329,7 @@
 				2458A2311EE84476008EC469 /* GPATableHeaderView.swift in Sources */,
 				24D827F71EE68228006889F0 /* GPATableViewController.swift in Sources */,
 				24D827DE1EE681D5006889F0 /* AppDelegate.swift in Sources */,
+				24FACDE91F72AD9D005B8052 /* GPAConverter.swift in Sources */,
 				247C5CCF1EE9ABEF00F60EE5 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -29,7 +29,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         let displayWidth: CGFloat = self.view.frame.width
         let displayHeight: CGFloat = self.view.frame.height
  
-        self.tableView = UITableView(frame: CGRect(x: 0, y: statusbarHeight + 60, width: displayWidth, height: displayHeight - statusbarHeight - 60), style: UITableViewStyle.grouped)
+        self.tableView = UITableView(frame: CGRect(x: 0, y: statusbarHeight + 64 + 60, width: displayWidth, height: displayHeight - statusbarHeight - 64 - 60), style: UITableViewStyle.grouped)
         self.tableView!.delegate = self
         self.tableView!.dataSource = self
         let nib = UINib(nibName: CellIdentifier, bundle: nil)
@@ -75,7 +75,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
                 
             })
         }
-        headerView?.gpaLabel.text = String(format: "%.3f", GPACalculator.calculateGPA(courseList: allCourseList))
+        headerView?.gpaLabel.text = String(format: "%.3f", GPACalculator.sharedCalculator.calculateGPA(courseList: allCourseList))
         headerView?.courseNumLabel.text = String(format: "共 %d 门课程", allCourseList.count)
     }
 
@@ -144,7 +144,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         let headerView = GPATableHeaderView.instanceFromNib()
         let termModel : TermModel = termList[section]
         headerView.termTitleLabel.text = termModel.name
-        headerView.gpaLabel.text = String(format: "%.3f", GPACalculator.calculateGPA(courseList: termModel.courseList.filter{
+        headerView.gpaLabel.text = String(format: "%.3f", GPACalculator.sharedCalculator.calculateGPA(courseList: termModel.courseList.filter{
             
             let coursePath = IndexPath.init(row: termModel.courseList.index(of: $0)!, section: section)
             return !ignoreCourseSet.contains(coursePath)

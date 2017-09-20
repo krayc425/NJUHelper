@@ -13,12 +13,32 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     var loginTableView: UITableView?
     var loginButton: UIButton?
-    var userNameText: UITextField?
-    var passwordText: UITextField?
-    var validateCodeText: UITextField?
+    var userNameText: UITextField? {
+        didSet {
+            self.userNameText?.delegate = self
+        }
+    }
+    var passwordText: UITextField? {
+        didSet {
+            self.passwordText?.delegate = self
+        }
+    }
+    var validateCodeText: UITextField? {
+        didSet {
+            self.validateCodeText?.delegate = self
+        }
+    }
+    var validateCodeButton: UIButton? {
+        didSet {
+            refreshValidateCode(self)
+        }
+    }
+    var cookieArray = [ [HTTPCookiePropertyKey : Any ] ]()
     
     let cellIdentifier = "LoginTableViewCell"
     let cellCaptchaIdentifier = "LoginCaptchaTableViewCell"
+    
+    let validateCodeURL = URL(string: "http://elite.nju.edu.cn/jiaowu/ValidateCode.jsp")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +64,11 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
         self.loginButton?.layer.masksToBounds = true
         self.loginButton?.addTarget(self, action: #selector(loginAction(sender:)), for: UIControlEvents.touchUpInside)
         self.view.addSubview(self.loginButton!)
+        
+        self.validateCodeButton?.addTarget(self, action: #selector(refreshValidateCode), for: .touchUpInside)
+        
+        //清空 cookie
+        self.clearCookies()
     }
 
     override func didReceiveMemoryWarning() {
@@ -52,66 +77,76 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     // MARK: - Login Action
     
-    @objc func loginAction(sender: UIButton) {
+    @objc func loginAction(sender: Any) {
         SVProgressHUD.show()
         
         let username = (userNameText?.text)!, password = (passwordText?.text)!, validateCode = (validateCodeText?.text)!
-        let requestURL = "http://120.25.196.24:8001/gpa/username=\(username)&password=\(password)&validateCode=\(validateCode)"
+        let requestURL = "http://elite.nju.edu.cn/jiaowu/login.do"
+        for cookieData in self.cookieArray {
+            if let cookie = HTTPCookie.init(properties : cookieData) {
+                HTTPCookieStorage.shared.setCookie(cookie)
+            }
+        }
         
-        Alamofire.request(requestURL).responseJSON { response in
-            debugPrint(response)
-            if let json = response.result.value {
-                SVProgressHUD.dismiss()
-                
-                let array = json as! Array<AnyObject>
-                
-                guard array.count > 0 else {
-                    let alertC = UIAlertController.init(title: "登录失败", message:nil, preferredStyle: UIAlertControllerStyle.alert)
-                    let OKAction = UIAlertAction.init(title: "好的", style: UIAlertActionStyle.default, handler:nil)
-                    alertC.addAction(OKAction)
-                    self.present(alertC, animated: true, completion:nil)
-                    
-                    return
-                }
+        let postDict = ["userName": username,
+                        "password": password,
+                        "ValidateCode": validateCode]
+        
+        Alamofire.request(requestURL, method: .post, parameters: postDict ).responseString { (response) in
+            SVProgressHUD.dismiss()
             
-                UserDefaults.standard.set(username, forKey: "username")
-                UserDefaults.standard.set(password, forKey: "password")
-                UserDefaults.standard.synchronize()
+            if response.result.isSuccess {
+                print("Success!")
                 
-                var resultList = [TermModel]()
-                for dict in array{
-                    let termName = dict["term"] as! String
-                    let courseArr = dict["course_list"] as! Array<AnyObject>
-                    var courseList = [CourseModel]()
-                    for subCourseDict in courseArr{
-                        let chineseName = subCourseDict["chinese_name"] as? String ?? ""
-                        let englishName = subCourseDict["english_name"] as? String ?? ""
-                        let credit : Float?
-                        let type  = subCourseDict["type"] as? String ?? "通修"
-                        if subCourseDict["credit"] as! String != ""{
-                            credit = Float(subCourseDict["credit"] as! String)
-                        }else{
-                            credit = nil
-                        }
-                        let score : Float? = Float(subCourseDict["score"] as! String)
-                        let courseModel = CourseModel()
-                        courseModel.chineseName = chineseName
-                        courseModel.englishName = englishName
-                        courseModel.score = score
-                        courseModel.credit = credit
-                        courseModel.type = courseType(rawValue: type)!
-                        courseList.append(courseModel)
-                    }
-                    let termModel = TermModel(name: termName, courseList: courseList)
-                    resultList.append(termModel)
-                }
-                
-                let loginVC = GPATableViewController()
-                loginVC.termList = resultList
-                self.navigationController?.pushViewController(loginVC, animated: true)
+                self.loadGradePoints()
+            } else {
+                print("Fail")
             }
         }
 
+    }
+    
+    @objc func refreshValidateCode(_ sender: Any) {
+        if let validateCodeURL = validateCodeURL {
+            self.clearCookies()
+            Alamofire.request(validateCodeURL).responseData(completionHandler: { (response) in
+                let headerFields = response.response?.allHeaderFields as! [String: String]
+                let url = response.request?.url
+                let cookies = HTTPCookie.cookies(withResponseHeaderFields: headerFields, for: url!)
+                var cookieArray = [ [HTTPCookiePropertyKey : Any ] ]()
+                for cookie in cookies {
+                    cookieArray.append(cookie.properties!)
+                }
+                self.cookieArray = cookieArray
+                
+                self.validateCodeButton!.setBackgroundImage(UIImage(data: response.data!), for: .normal)
+            })
+        }
+    }
+    
+    func loadGradePoints() {
+        let commonURL = URL(string: "http://elite.nju.edu.cn/jiaowu/student/studentinfo/achievementinfo.do?method=searchTermList")
+        Alamofire.request(commonURL!).responseString { (response) in
+            if response.result.isSuccess {
+                GPAConverter.sharedConverter.convertCourses(from: String(data: response.data!, encoding: String.Encoding.utf8)!, completionHandler: { (termModels) in
+                    if let termList = termModels {
+                        let loginVC = GPATableViewController()
+                        loginVC.termList = termList
+                        self.navigationController?.pushViewController(loginVC, animated: true)
+                    }
+                })
+            } else {
+                print("Fail")
+            }
+        }
+    }
+    
+    private func clearCookies() {
+        if let cookies = HTTPCookieStorage.shared.cookies(for: validateCodeURL!) {
+            for cookie in cookies {
+                HTTPCookieStorage.shared.deleteCookie(cookie)
+            }
+        }
     }
     
     // MARK: - Table view data source
@@ -147,6 +182,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             let cell = tableView.dequeueReusableCell(withIdentifier: cellCaptchaIdentifier, for: indexPath) as! LoginCaptchaTableViewCell
             
             validateCodeText = cell.captchaText
+            validateCodeButton = cell.captchaButton
+            
             return cell
         }
         
@@ -158,6 +195,21 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
     func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         return "用户名和密码信息仅存储在本地，请放心使用"
+    }
+    
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == self.userNameText {
+            self.passwordText?.becomeFirstResponder()
+        } else if textField == self.passwordText {
+            self.validateCodeText?.becomeFirstResponder()
+        } else {
+            self.loginAction(sender: self.validateCodeText!)
+        }
+        return true
     }
     
 }

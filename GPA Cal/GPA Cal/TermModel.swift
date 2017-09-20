@@ -9,6 +9,7 @@
 import UIKit
 
 class TermModel: NSObject {
+    
     var name: String
     var courseList = [CourseModel]()
     
@@ -16,4 +17,5 @@ class TermModel: NSObject {
         self.name = name
         self.courseList = courseList
     }
+    
 }
