@@ -1,7 +1,7 @@
 PODS:
   - AIFlatSwitch (1.0.2)
-  - Alamofire (4.5.0)
-  - SVProgressHUD (2.1.2)
+  - Alamofire (4.5.1)
+  - SVProgressHUD (2.2.1)
 
 DEPENDENCIES:
   - AIFlatSwitch
@@ -10,8 +10,8 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   AIFlatSwitch: 5ab22806eeff3e09d585c2f13d22bfa6e3427191
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  SVProgressHUD: db27c54e6e18bc903341661fc9feb55e04905cc4
 
 PODFILE CHECKSUM: 61dc65fb812f5f3ae9e01be90e80c97cdf1171ba
 

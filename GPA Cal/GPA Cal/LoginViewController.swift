@@ -99,6 +99,19 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         "ValidateCode": validateCode]
         
         Alamofire.request(requestURL, method: .post, parameters: postDict ).responseString { (response) in
+            
+//            print(String(data: response.data!, encoding: String.Encoding.utf8) ?? "" )
+            
+            if let resultString = String(data: response.data!, encoding: String.Encoding.utf8) {
+                if resultString.contains("验证码错误！") {
+                    SVProgressHUD.showError(withStatus: "验证码错误")
+                    SVProgressHUD.dismiss(withDelay: 2.0)
+                } else if resultString.contains("用户名或密码错误！") {
+                    SVProgressHUD.showError(withStatus: "用户名或密码错误")
+                    SVProgressHUD.dismiss(withDelay: 2.0)
+                }
+            }
+            
             if response.result.isSuccess {
                 print("Success!")
                 
