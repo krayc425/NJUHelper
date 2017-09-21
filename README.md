@@ -11,9 +11,4 @@ A GPA calculator for Nanjing University students, running on iOS 9.0 or later.
 
 ## Instruction
 
-```
-cd GPA\ Cal
-pod install
-```
-
-Then open `GPA Cal.xcworkspace`, and press `Cmd + R` to run.
+Open `GPA Cal.xcworkspace`, and press `Cmd + R` to run.

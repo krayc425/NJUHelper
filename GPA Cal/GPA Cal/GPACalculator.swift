@@ -16,14 +16,10 @@ class GPACalculator: NSObject {
     
     public static let sharedCalculator = GPACalculator()
 
-    func calculateGPA(courseList: [CourseModel]) -> Float {
-        var sum: Float = 0.0
-        var sumCredit: Float = 0.0
-        for course in courseList{
-            sum += (course.score ?? 0) * (course.credit ?? 0)
-            sumCredit += (course.credit ?? 0)
-        }
-        return sumCredit == 0 ? 0 :  (sum / sumCredit) / 20
+    func calculateGPA(courseList: [CourseModel]) -> (Float, Int) {
+        let sumCredit: Float = courseList.reduce(0.0, { $0 + ($1.credit ?? 0.0) }) // $0 指累加器（accumulator），$1 指遍历数组得到的一个元素
+        let sum: Float = courseList.reduce(0.0, { $0 + ($1.score ?? 0.0) * ($1.credit ?? 0.0) })
+        return (sumCredit == 0.0 ? 0.0 : (sum / sumCredit) / 20.0, Int(sumCredit))
     }
     
 }

@@ -15,11 +15,17 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
     var loginButton: UIButton?
     var userNameText: UITextField? {
         didSet {
+            if let username = UserDefaults.standard.value(forKey: "username") as? String {
+                userNameText?.text = username
+            }
             self.userNameText?.delegate = self
         }
     }
     var passwordText: UITextField? {
         didSet {
+            if let password = UserDefaults.standard.value(forKey: "password") as? String {
+                passwordText?.text = password
+            }
             self.passwordText?.delegate = self
         }
     }
@@ -93,10 +99,12 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
                         "ValidateCode": validateCode]
         
         Alamofire.request(requestURL, method: .post, parameters: postDict ).responseString { (response) in
-            SVProgressHUD.dismiss()
-            
             if response.result.isSuccess {
                 print("Success!")
+                
+                UserDefaults.standard.set(username, forKey: "username")
+                UserDefaults.standard.set(password, forKey: "password")
+                UserDefaults.standard.synchronize()
                 
                 self.loadGradePoints()
             } else {
@@ -130,6 +138,8 @@ class LoginViewController: UIViewController, UITableViewDelegate, UITableViewDat
             if response.result.isSuccess {
                 GPAConverter.sharedConverter.convertCourses(from: String(data: response.data!, encoding: String.Encoding.utf8)!, completionHandler: { (termModels) in
                     if let termList = termModels {
+                        SVProgressHUD.dismiss()
+                        
                         let loginVC = GPATableViewController()
                         loginVC.termList = termList
                         self.navigationController?.pushViewController(loginVC, animated: true)

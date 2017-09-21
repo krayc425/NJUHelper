@@ -75,8 +75,9 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
                 
             })
         }
-        headerView?.gpaLabel.text = String(format: "%.3f", GPACalculator.sharedCalculator.calculateGPA(courseList: allCourseList))
-        headerView?.courseNumLabel.text = String(format: "共 %d 门课程", allCourseList.count)
+        let gpaResult = GPACalculator.sharedCalculator.calculateGPA(courseList: allCourseList)
+        headerView?.gpaLabel.text = String(format: "%.3f", gpaResult.0)
+        headerView?.courseNumLabel.text = String(format: "共 %d 门课程，%d 个学分", allCourseList.count, gpaResult.1)
     }
 
     // MARK: - Table view data source
@@ -144,13 +145,15 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         let headerView = GPATableHeaderView.instanceFromNib()
         let termModel : TermModel = termList[section]
         headerView.termTitleLabel.text = termModel.name
-        headerView.gpaLabel.text = String(format: "%.3f", GPACalculator.sharedCalculator.calculateGPA(courseList: termModel.courseList.filter{
+        
+        let gpaResult = GPACalculator.sharedCalculator.calculateGPA(courseList: termModel.courseList.filter {
             
             let coursePath = IndexPath.init(row: termModel.courseList.index(of: $0)!, section: section)
             return !ignoreCourseSet.contains(coursePath)
             
-        }))
-        headerView.courseNumLabel.text = String(format: "共 %d 门课程", termModel.courseList.count)
+        })
+        headerView.gpaLabel.text = String(format: "%.3f", gpaResult.0)
+        headerView.courseNumLabel.text = String(format: "共 %d 门课程，%d 个学分", termModel.courseList.count, gpaResult.1)
         return headerView
     }
     
@@ -224,3 +227,4 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     }
     
 }
+//
