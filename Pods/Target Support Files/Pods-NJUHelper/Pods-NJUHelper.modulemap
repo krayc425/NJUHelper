@@ -1,0 +1,6 @@
+framework module Pods_NJUHelper {
+  umbrella header "Pods-NJUHelper-umbrella.h"
+
+  export *
+  module * { export * }
+}

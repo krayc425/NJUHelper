@@ -1,6 +1,0 @@
-framework module Pods_GPA_Cal {
-  umbrella header "Pods-GPA Cal-umbrella.h"
-
-  export *
-  module * { export * }
-}
