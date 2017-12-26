@@ -9,18 +9,18 @@
 import UIKit
 
 protocol TypeSelectionDelegate: class {
-    func didSelectType(courseType: courseType, isAdding: Bool);
+    func didSelectType(courseType: courseType, isAdding: Bool)
 }
 
 class GPATypeSelectionView: UIView {
-
+    
     private var view: UIView?
     
     @IBOutlet weak var typeStack: UIStackView! {
         didSet {
             for view in typeStack.subviews {
                 let button = view as! UIButton
-                button.titleLabel?.font = UIFont(name: "PingFangSC-Regular", size: 14.0);
+                button.titleLabel?.font = UIFont(name: "PingFangSC-Regular", size: 14.0)
                 button.setTitleColor(UIColor.white, for: UIControlState.normal)
                 button.layer.cornerRadius = 5.0
                 button.layer.masksToBounds = true
@@ -33,7 +33,7 @@ class GPATypeSelectionView: UIView {
         }
     }
     var selectedType = NSMutableArray(capacity: 5)
-    var delegate: TypeSelectionDelegate?       //代理
+    var delegate: TypeSelectionDelegate?
     
     @IBOutlet var contentView: GPATypeSelectionView!
     

@@ -22,6 +22,15 @@ class PNJUHelper: NSObject {
         
     }
     
+    func setAutoLogin(_ isAuto: Bool) {
+        UserDefaults.standard.set(isAuto, forKey: "pnju_auto_login")
+        UserDefaults.standard.synchronize()
+    }
+    
+    func isAutoLogin() -> Bool {
+        return UserDefaults.standard.bool(forKey: "pnju_auto_login")
+    }
+    
     func login(username: String, password: String, completion: @escaping (_ resultMsg: String) -> Void) {
         let postDict: Parameters = ["username": username,
                                     "password": password]
@@ -49,7 +58,7 @@ class PNJUHelper: NSObject {
         }
     }
     
-    func checkStatua(completion: @escaping (_ status: PNJULogStatus) -> Void) {
+    func checkStatus(completion: @escaping (_ status: PNJULogStatus) -> Void) {
         var logStatus: PNJULogStatus = .logDisabled
         
         Alamofire.request(kCheckStatusUrl, method: .post).responseJSON { (response) in

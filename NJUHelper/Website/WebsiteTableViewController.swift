@@ -19,7 +19,8 @@ class WebsiteTableViewController: UITableViewController {
                                 ("学生综合服务平台", "http://xsgl.nju.edu.cn"),
                                 ("紫荆站", "http://zijingbt.njuftp.org"),
                                 ("志愿服务平台", "http://volunteer.nju.edu.cn"),
-                                ("校邮", "https://mail.nju.edu.cn")]
+                                ("校邮", "https://mail.nju.edu.cn"),
+                                ("交换生管理系统", "http://elite.nju.edu.cn/exchangesystem")]
 
     override func viewDidLoad() {
         super.viewDidLoad()

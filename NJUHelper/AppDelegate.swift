@@ -18,6 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         SVProgressHUD.setDefaultStyle(.dark)
         
+        if PNJUHelper.shared.isAutoLogin() {
+            pnjuAutoLogin()
+        }
+        
         return true
     }
 
@@ -45,16 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         if shortcutItem.type == "login" {
-            if let username = UserDefaults.standard.value(forKey: "pnju_username") as? String,
-                let password = UserDefaults.standard.value(forKey: "pnju_password") as? String {
-                PNJUHelper.shared.login(username: username, password: password, completion: { msg in
-                    SVProgressHUD.showInfo(withStatus: msg)
-                    SVProgressHUD.dismiss(withDelay: 1.0)
-                })
-            } else {
-                SVProgressHUD.showInfo(withStatus: "请至少成功登录一次，以保存您的用户名和密码")
-                SVProgressHUD.dismiss(withDelay: 2.0)
-            }
+            pnjuAutoLogin()
         } else if shortcutItem.type == "logout" {
             PNJUHelper.shared.logout(completion: { msg in
                 SVProgressHUD.showInfo(withStatus: msg)
@@ -63,5 +58,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
+    private func pnjuAutoLogin() {
+        if let username = UserDefaults.standard.value(forKey: "pnju_username") as? String,
+            let password = UserDefaults.standard.value(forKey: "pnju_password") as? String {
+            PNJUHelper.shared.login(username: username, password: password, completion: { msg in
+                SVProgressHUD.showInfo(withStatus: msg)
+                SVProgressHUD.dismiss(withDelay: 1.0)
+            })
+        } else {
+            SVProgressHUD.showInfo(withStatus: "请至少成功登录一次校园网，以保存您的用户名和密码")
+            SVProgressHUD.dismiss(withDelay: 2.0)
+        }
+    }
+    
 }
 

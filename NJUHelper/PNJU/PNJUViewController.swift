@@ -17,7 +17,8 @@ enum PNJULogStatus {
 
 class PNJUViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    let cellIdentifier = "LoginTableViewCell"
+    let loginCellIdentifier = "LoginTableViewCell"
+    let autoCellIdentifier = "PNJUAutoTableViewCell"
     
     convenience init(status: PNJULogStatus) {
         self.init(nibName: nil, bundle: nil)
@@ -54,16 +55,17 @@ class PNJUViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         self.title = "PNJU"
 
-        //TableView
+        // TableView
         loginTableView = UITableView(frame: CGRect(x: 0, y: 0, width: self.view.bounds.size.width, height: 250), style: .grouped)
         loginTableView!.delegate = self
         loginTableView!.dataSource = self
         loginTableView?.backgroundColor = .clear
-        loginTableView!.register(UINib(nibName: cellIdentifier, bundle: nil), forCellReuseIdentifier: cellIdentifier)
+        loginTableView!.register(UINib(nibName: loginCellIdentifier, bundle: nil), forCellReuseIdentifier: loginCellIdentifier)
+        loginTableView!.register(UINib(nibName: autoCellIdentifier, bundle: nil), forCellReuseIdentifier: autoCellIdentifier)
         loginTableView?.isScrollEnabled = false
         self.view.addSubview(loginTableView!)
         
-        //Button
+        // Button
         loginButton = UIButton(frame: CGRect(x: self.view.center.x - 40, y: (self.loginTableView?.frame.size.height)! + 20, width: 80, height: 40))
         loginButton?.setTitleColor(.white, for: UIControlState.normal)
         loginButton?.setTitle("不适用", for: .normal)
@@ -96,7 +98,7 @@ class PNJUViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         weak var weakSelf = self
         
-        PNJUHelper.shared.checkStatua { (status) in
+        PNJUHelper.shared.checkStatus { (status) in
             weakSelf?.logStatus = status
             
             SVProgressHUD.dismiss()
@@ -104,7 +106,7 @@ class PNJUViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func refreshLoginButton() {
-        switch (logStatus) {
+        switch logStatus {
         case .logDisabled:
             loginButton?.setTitle("不适用", for: .normal)
             loginButton?.isEnabled = false
@@ -157,12 +159,12 @@ class PNJUViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! LoginTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: loginCellIdentifier, for: indexPath) as! LoginTableViewCell
             cell.loginLabel?.text = "用户名"
             let username = UserDefaults.standard.value(forKey: "pnju_username") as? String
             cell.loginText?.text = username ?? ""
@@ -170,7 +172,7 @@ class PNJUViewController: UIViewController, UITableViewDelegate, UITableViewData
             userNameText = cell.loginText
             return cell
         } else if indexPath.row == 1 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! LoginTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: loginCellIdentifier, for: indexPath) as! LoginTableViewCell
             cell.loginLabel?.text = "密码"
             cell.loginText?.isSecureTextEntry = true
             let password = UserDefaults.standard.value(forKey: "pnju_password") as? String
@@ -178,6 +180,8 @@ class PNJUViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             passwordText = cell.loginText
             return cell
+        } else if indexPath.row == 2 {
+            return tableView.dequeueReusableCell(withIdentifier: autoCellIdentifier, for: indexPath) as! PNJUAutoTableViewCell
         }
         
         return UITableViewCell()

@@ -157,7 +157,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     
     // MARK: - Type Selection Delegate
     
-    func didSelectType(courseType: courseType, isAdding: Bool){
+    func didSelectType(courseType: courseType, isAdding: Bool) {
         if isAdding {
             self.ignoreCourseOfType(courseType: courseType)
         } else {
@@ -170,7 +170,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         for term in self.termList {
             for course in term.courseList where course.type == courseType {
                 let path = IndexPath.init(row: term.courseList.index(of: course)!, section: self.termList.index(of: term)!)
-                if !ignoreCourseSet.contains(path){
+                if !ignoreCourseSet.contains(path) {
                     ignoreCourseSet.insert(path)
                 }
             }
@@ -181,7 +181,7 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
         for term in self.termList {
             for course in term.courseList where course.type == courseType {
                 let path = IndexPath.init(row: term.courseList.index(of: course)!, section: self.termList.index(of: term)!)
-                if ignoreCourseSet.contains(path){
+                if ignoreCourseSet.contains(path) {
                     ignoreCourseSet.remove(path)
                 }
             }

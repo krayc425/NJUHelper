@@ -26,6 +26,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     }
     
     private func hideBottomLine(under view: UIView) {
+        
         func findBottomLine(under view: UIView) -> UIImageView? {
             if view is UIImageView && view.bounds.size.height <= 1.0 {
                 return view as? UIImageView

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		243229C81FF225250030C070 /* PNJUAutoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243229C61FF225250030C070 /* PNJUAutoTableViewCell.swift */; };
+		243229C91FF225250030C070 /* PNJUAutoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 243229C71FF225250030C070 /* PNJUAutoTableViewCell.xib */; };
 		24A556C81FEA582300466CE8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A556C71FEA582300466CE8 /* AppDelegate.swift */; };
 		24A556CD1FEA582300466CE8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 24A556CB1FEA582300466CE8 /* Main.storyboard */; };
 		24A556CF1FEA582300466CE8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 24A556CE1FEA582300466CE8 /* Assets.xcassets */; };
@@ -41,6 +43,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		243229C61FF225250030C070 /* PNJUAutoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PNJUAutoTableViewCell.swift; sourceTree = "<group>"; };
+		243229C71FF225250030C070 /* PNJUAutoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PNJUAutoTableViewCell.xib; sourceTree = "<group>"; };
 		24A556C41FEA582300466CE8 /* NJUHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NJUHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		24A556C71FEA582300466CE8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		24A556CC1FEA582300466CE8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -181,6 +185,8 @@
 			children = (
 				24A5570D1FEA5CCA00466CE8 /* PNJUViewController.swift */,
 				24AC292D1FEB5F33003FBB5B /* PNJUHelper.swift */,
+				243229C61FF225250030C070 /* PNJUAutoTableViewCell.swift */,
+				243229C71FF225250030C070 /* PNJUAutoTableViewCell.xib */,
 			);
 			path = PNJU;
 			sourceTree = "<group>";
@@ -287,6 +293,7 @@
 				24A556F91FEA598000466CE8 /* GPATableViewCell.xib in Resources */,
 				24A556D21FEA582300466CE8 /* LaunchScreen.storyboard in Resources */,
 				24A556CF1FEA582300466CE8 /* Assets.xcassets in Resources */,
+				243229C91FF225250030C070 /* PNJUAutoTableViewCell.xib in Resources */,
 				24A556F81FEA598000466CE8 /* GPATableHeaderView.xib in Resources */,
 				24A556F11FEA598000466CE8 /* LoginCaptchaTableViewCell.xib in Resources */,
 				24A556F61FEA598000466CE8 /* LoginTableViewCell.xib in Resources */,
@@ -381,6 +388,7 @@
 				24AC29301FEB7CE7003FBB5B /* WebsiteTableViewController.swift in Sources */,
 				24A556F71FEA598000466CE8 /* GPATableHeaderView.swift in Sources */,
 				24A556C81FEA582300466CE8 /* AppDelegate.swift in Sources */,
+				243229C81FF225250030C070 /* PNJUAutoTableViewCell.swift in Sources */,
 				24A556F51FEA598000466CE8 /* GPAConverter.swift in Sources */,
 				24A5570E1FEA5CCA00466CE8 /* PNJUViewController.swift in Sources */,
 				24AC292C1FEB5E06003FBB5B /* Constants.swift in Sources */,
@@ -457,7 +465,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -508,7 +516,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -528,7 +536,7 @@
 				INFOPLIST_FILE = NJUHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.krayc.NJUHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.krayc.VolleyballStatistics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NJUHelper/NJUHelper-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -549,7 +557,7 @@
 				INFOPLIST_FILE = NJUHelper/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.krayc.NJUHelper;
+				PRODUCT_BUNDLE_IDENTIFIER = com.krayc.VolleyballStatistics;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "NJUHelper/NJUHelper-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;

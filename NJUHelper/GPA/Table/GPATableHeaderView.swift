@@ -40,7 +40,7 @@ class GPATableHeaderView: UIView {
         // Show the view.
         addSubview(view)
         
-        termTitleLabel.font = UIFont.init(name: "PingFangSC-SemiBold", size: 16.0);
+        termTitleLabel.font = UIFont.init(name: "PingFangSC-SemiBold", size: 16.0)
         gpaLabel.font = UIFont.init(name: "PingFangSC-Light", size: 35.0)
         courseNumLabel.font = UIFont.init(name: "PingFangSC-Regular", size: 13.0)
         courseNumLabel.textColor = UIColor.gray

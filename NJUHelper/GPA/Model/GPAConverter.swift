@@ -26,7 +26,7 @@ class GPAConverter: NSObject {
         
         let res = termRegex.matches(in: string,
                                     options: NSRegularExpression.MatchingOptions(rawValue:0),
-                                    range: NSMakeRange(0, string.characters.count))
+                                    range: NSMakeRange(0, string.count))
         
         if res.count > 0 {
             for subStr in res {
@@ -40,7 +40,7 @@ class GPAConverter: NSObject {
                         
                         let courseRes = self.courseRegex.matches(in: courseString,
                                                                  options: NSRegularExpression.MatchingOptions(rawValue:0),
-                                                                 range: NSMakeRange(0, courseString.characters.count))
+                                                                 range: NSMakeRange(0, courseString.count))
                         
                         if courseRes.count > 0 {
                             var courseModelArray = [CourseModel]()

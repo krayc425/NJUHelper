@@ -80,7 +80,7 @@ class GPALoginViewController: UIViewController, UITableViewDelegate, UITableView
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        //清空 cookie
+        // 清空 cookie
         self.clearCookies()
     }
     
