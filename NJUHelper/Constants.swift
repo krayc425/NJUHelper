@@ -8,5 +8,5 @@
 
 import UIKit
 
-let kScreenWidth    = CGFloat.minimum(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
-let kScreenHeight   = CGFloat.maximum(UIScreen.main.bounds.width, UIScreen.main.bounds.height)
+let kScreenWidth    = UIScreen.main.bounds.width
+let kScreenHeight   = UIScreen.main.bounds.height

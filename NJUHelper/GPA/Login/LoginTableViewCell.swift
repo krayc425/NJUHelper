@@ -16,12 +16,10 @@ class LoginTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        //Label
         loginLabel.font = UIFont.init(name: "PingFangSC-Regular", size: 15.0);
         loginLabel.textColor = UIColor.gray
         loginLabel.sizeToFit()
         
-        //Text
         loginText.font = UIFont.init(name: "PingFangSC-Regular", size: 15.0);
     }
 

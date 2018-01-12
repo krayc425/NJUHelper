@@ -57,9 +57,9 @@ class GPATableViewController: UIViewController, UITableViewDelegate, UITableView
     
     private func reloadAllGPA() {
         var allCourseList = [CourseModel]()
-        for term in termList{
+        for term in termList {
             allCourseList.append(contentsOf: term.courseList.filter {
-                let coursePath = IndexPath.init(row: term.courseList.index(of: $0)!, section: termList.index(of: term)!)
+                let coursePath = IndexPath(row: term.courseList.index(of: $0)!, section: termList.index(of: term)!)
                 return !ignoreCourseSet.contains(coursePath)
             })
         }

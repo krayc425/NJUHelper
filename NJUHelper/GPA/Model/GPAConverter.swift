@@ -56,12 +56,13 @@ class GPAConverter: NSObject {
                             termModelArray.append(TermModel(name: termName, courseList: courseModelArray))
                             
                             if res.count == termModelArray.count {
-                                completionHandler(termModelArray)
+                                completionHandler(termModelArray.sorted(by: { (model1, model2) -> Bool in
+                                    model1.name.compare(model2.name) == ComparisonResult.orderedDescending
+                                }))
                             }
                         }
                     } else {
                         print("Fail")
-                        
                         completionHandler(nil)
                     }
                 }
