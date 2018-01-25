@@ -26,4 +26,8 @@ extension UIColor {
         return UIColor(red:243.0/255.0, green:205.0/255.0, blue:86.0/255.0 , alpha:1.0)
     }
     
+    static var course: UIColor {
+        return UIColor(red:136.0/255.0, green:200.0/255.0, blue:101.0/255.0 , alpha:1.0)
+    }
+    
 }

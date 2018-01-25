@@ -12,9 +12,9 @@ private let reuseIdentifier = "MainCollectionViewCell"
 
 class MainCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    private let cellColors = [UIColor.pnju, UIColor.gpa, UIColor.website]
-    private let cellTitles = ["PNJU", "GPA", "Websites"]
-    private let cellSegues = ["PNJUSegue", "GPASegue", "WebsiteSegue"]
+    private let cellColors = [UIColor.pnju, UIColor.gpa, UIColor.website, UIColor.course]
+    private let cellTitles = ["PNJU", "GPA", "Websites", "Courses"]
+    private let cellSegues = ["PNJUSegue", "GPASegue", "WebsiteSegue", "CourseSegue"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +65,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return cellColors.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> MainCollectionViewCell {
@@ -88,7 +88,7 @@ class MainCollectionViewController: UICollectionViewController, UICollectionView
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: kScreenWidth - 20, height: 200)
+        return CGSize(width: (kScreenWidth - 30) / 2.0, height: (kScreenWidth - 30) / 2.0)
     }
     
 }
